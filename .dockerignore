@@ -1,0 +1,17 @@
+Dockerfile
+.dockerignore
+docker-compose*.yml
+node_modules
+.next
+.git
+.gitignore
+.aistudio
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env*.local
+.env
+apps_download_view.png
+card2_uploaded.png
+mobile_bio_home.png

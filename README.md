@@ -56,6 +56,25 @@ npm start
 
 ---
 
+## 🐳 Deploying with Dokploy
+
+This repository is pre-configured with a production-ready, multi-stage Next.js standalone `Dockerfile` and `docker-compose.yml`.
+
+### In Dokploy Dashboard:
+1. **Create New Application:** Choose **GitHub** or **Git**.
+2. **Repository:** `rizo8107/nirmalinstabio`
+3. **Branch:** `main`
+4. **Build Type:** Select **Dockerfile** (or **Docker Compose**).
+5. **Port:** `3000`
+6. **Environment Variables:**
+   * `NODE_ENV=production`
+   * `PORT=3000`
+   * `HOSTNAME=0.0.0.0`
+7. **Domains:** Add your custom domain (Dokploy's Traefik reverse proxy handles automatic SSL via Let's Encrypt).
+8. Click **Deploy**.
+
+---
+
 ## 📄 License
 
 MIT Open Source License. Built by [Nirmal](https://github.com/rizo8107).

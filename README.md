@@ -33,8 +33,8 @@ This repository includes dedicated showcases, documentation, and live preview ga
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/rizo8107/nirmalinstabio.git
-cd nirmalinstabio
+git clone https://github.com/bizshift/learnwithnirmal.git
+cd learnwithnirmal
 ```
 
 ### 2. Install dependencies
@@ -62,7 +62,7 @@ This repository is pre-configured with a production-ready, multi-stage Next.js s
 
 ### In Dokploy Dashboard:
 1. **Create New Application:** Choose **GitHub** or **Git**.
-2. **Repository:** `rizo8107/nirmalinstabio`
+2. **Repository:** `bizshift/learnwithnirmal`
 3. **Branch:** `main`
 4. **Build Type:** Select **Dockerfile** (or **Docker Compose**).
 5. **Port:** `3000`

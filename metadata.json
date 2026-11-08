@@ -2,5 +2,5 @@
   "name": "Nirmal — Creator, Designer & Builder",
   "description": "Minimal, sharp Notion-style Instagram bio link and portfolio page for Nirmal. Featuring free AI guides, digital products, channels, and work.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }

@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Sun, Moon, Share2, Check, ArrowUpRight } from 'lucide-react';
+import { Sun, Moon, Share2, Check, ShoppingBag } from 'lucide-react';
 import { BIO_PROFILE } from '@/lib/bio-data';
+import { useCart } from '@/lib/cart-context';
 
 interface TopNavProps {
   activeTab: 'bio' | 'story';
@@ -24,6 +25,8 @@ export default function TopNav({
   copiedBioLink,
   onCopyBioLink,
 }: TopNavProps) {
+  const { itemCount, setIsCartOpen } = useCart();
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-neutral-200 bg-white/95 backdrop-blur-sm dark:border-neutral-800 dark:bg-[#111111]/95">
       <div className="mx-auto flex h-14 max-w-2xl items-center justify-between px-3 sm:px-6">
@@ -80,8 +83,24 @@ export default function TopNav({
           </button>
         </nav>
 
-        {/* Actions: Theme Toggle & Share - Unified h-8 height */}
+        {/* Actions: Cart, Theme Toggle & Share */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {/* Cart Button */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="pixel-press relative flex h-8 items-center gap-1.5 border border-neutral-900 bg-white px-2 sm:px-2.5 font-mono text-xs font-bold text-neutral-900 shadow-[1px_1px_0px_0px_#000] hover:bg-neutral-100 dark:border-neutral-100 dark:bg-neutral-900 dark:text-neutral-100 dark:shadow-[1px_1px_0px_0px_#fff]"
+            title="Open Shopping Cart"
+            aria-label={`Open Cart (${itemCount} items)`}
+          >
+            <ShoppingBag className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+            <span className="hidden sm:inline">CART</span>
+            {itemCount > 0 && (
+              <span className="flex h-4 min-w-4 items-center justify-center border border-black bg-[#10B981] px-1 font-mono text-[9px] font-bold text-black">
+                {itemCount}
+              </span>
+            )}
+          </button>
+
           <button
             onClick={toggleTheme}
             className="pixel-press flex h-8 w-8 items-center justify-center border border-neutral-900 bg-white text-neutral-800 shadow-[1px_1px_0px_0px_#000] hover:bg-neutral-100 dark:border-neutral-100 dark:bg-neutral-900 dark:text-neutral-200 dark:shadow-[1px_1px_0px_0px_#fff] dark:hover:bg-neutral-800"

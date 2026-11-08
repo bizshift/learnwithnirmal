@@ -3,8 +3,10 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Github, Download } from 'lucide-react';
+import { ArrowUpRight, Github, Download, ShoppingBag, Zap } from 'lucide-react';
 import { BIO_PROFILE, FREE_GUIDES, FREE_APPS, CHANNELS, GuideItem } from '@/lib/bio-data';
+import { STORE_PRODUCTS } from '@/lib/store-data';
+import { useCart } from '@/lib/cart-context';
 import {
   PixelInstagram,
   PixelYouTube,
@@ -27,6 +29,7 @@ export default function BioLinkView({
   onOpenContact,
   onSwitchToStory,
 }: BioLinkViewProps) {
+  const { addToCart, setIsCartOpen, itemCount } = useCart();
 
   const getChannelPixelIcon = (platform: string) => {
     switch (platform) {
@@ -340,6 +343,55 @@ export default function BioLinkView({
           </div>
         </section>
 
+        {/* Pro Starter Kits & Digital Store */}
+        <section>
+          <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
+            <span className="font-semibold text-neutral-900 uppercase dark:text-neutral-100">[ DIGITAL STARTER KITS ]</span>
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="text-emerald-700 hover:underline dark:text-emerald-400 font-mono text-[10px]"
+            >
+              Cart ({itemCount}) →
+            </button>
+          </div>
+
+          <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {STORE_PRODUCTS.slice(0, 2).map((prod) => (
+              <div
+                key={prod.id}
+                className="flex items-center gap-3 border border-neutral-900 bg-white p-3 shadow-[2px_2px_0px_0px_#000] dark:border-neutral-100 dark:bg-[#161616] dark:shadow-[2px_2px_0px_0px_#fff]"
+              >
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden border border-neutral-900 bg-neutral-950 dark:border-neutral-800">
+                  <Image
+                    src={prod.coverImage}
+                    alt={prod.title}
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-bold text-xs text-neutral-900 dark:text-neutral-100 truncate">
+                    {prod.title}
+                  </div>
+                  <div className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400 mt-0.5">
+                    ₹{prod.price} <span className="line-through text-neutral-400">₹{prod.originalPrice}</span>
+                  </div>
+                  <div className="mt-1 flex items-center gap-1.5">
+                    <button
+                      onClick={() => addToCart(prod)}
+                      className="pixel-press border border-neutral-900 bg-[#10B981] px-2 py-0.5 font-mono text-[9px] font-bold text-black shadow-[1px_1px_0px_0px_#000] hover:bg-emerald-400 dark:border-neutral-100"
+                    >
+                      + ADD TO CART
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Explore Section */}
         <section>
           <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400 dark:text-neutral-500">
@@ -347,7 +399,7 @@ export default function BioLinkView({
             <span>Projects &amp; Tools</span>
           </div>
 
-          <div className="mt-1.5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div className="mt-1.5 grid grid-cols-2 gap-2 sm:grid-cols-5">
             <button
               onClick={onSwitchToStory}
               className="pixel-press flex items-center justify-between border border-neutral-900 bg-white px-2.5 py-2 text-left shadow-[1px_1px_0px_0px_#000] hover:bg-neutral-50 dark:border-neutral-100 dark:bg-[#161616] dark:shadow-[1px_1px_0px_0px_#fff] dark:hover:bg-neutral-900"
@@ -392,6 +444,18 @@ export default function BioLinkView({
               </div>
               <span className="font-mono text-[10px] text-neutral-400">↗</span>
             </button>
+
+            <Link
+              href="/drip-campaign"
+              className="pixel-press flex items-center justify-between border border-emerald-600 bg-emerald-50 px-2.5 py-2 text-left shadow-[1px_1px_0px_0px_#000] hover:bg-emerald-100 dark:border-emerald-500/50 dark:bg-emerald-950/30 dark:shadow-[1px_1px_0px_0px_#fff] dark:hover:bg-emerald-900/40"
+              title="Abandoned Cart Drip Campaign Studio"
+            >
+              <div className="flex items-center gap-1.5">
+                <span className="inline-block h-2 w-2 bg-[#10B981]" />
+                <span className="text-xs font-bold text-neutral-900 dark:text-neutral-100">Drip Setup</span>
+              </div>
+              <span className="font-mono text-[10px] text-emerald-600 font-bold">⚡</span>
+            </Link>
           </div>
         </section>
 

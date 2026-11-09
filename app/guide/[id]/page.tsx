@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { FREE_GUIDES, BIO_PROFILE } from '@/lib/bio-data';
 import ShareGuideClient from './ShareGuideClient';
+import InteractiveWindowsGuide from '@/components/InteractiveWindowsGuide';
 
 interface GuidePageProps {
   params: Promise<{ id: string }>;
@@ -50,6 +51,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   if (!guide) {
     notFound();
+  }
+
+  if (guide.id === 'windows-app-beginner-guide') {
+    return <InteractiveWindowsGuide />;
   }
 
   return (

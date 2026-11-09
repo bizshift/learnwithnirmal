@@ -2,10 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { X, Check, Copy, ArrowRight, ShieldCheck, Zap, ShoppingBag } from 'lucide-react';
+import { X, Check, Copy, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 import { FEATURED_PRODUCT } from '@/lib/bio-data';
-import { STORE_PRODUCTS } from '@/lib/store-data';
-import { useCart } from '@/lib/cart-context';
 
 interface StoreBlueprintModalProps {
   isOpen: boolean;
@@ -14,7 +12,6 @@ interface StoreBlueprintModalProps {
 
 export default function StoreBlueprintModal({ isOpen, onClose }: StoreBlueprintModalProps) {
   const [copied, setCopied] = useState(false);
-  const { addToCart } = useCart();
 
   if (!isOpen) return null;
 
@@ -33,17 +30,12 @@ export default function StoreBlueprintModal({ isOpen, onClose }: StoreBlueprintM
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleGetProCode = () => {
-    addToCart(STORE_PRODUCTS[0]);
-    onClose();
-  };
-
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-labelledby="store-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-[2px]"
       onClick={onClose}
     >
       <div
@@ -108,11 +100,11 @@ export default function StoreBlueprintModal({ isOpen, onClose }: StoreBlueprintM
 
           <div className="space-y-2 text-xs">
             <div className="border border-neutral-200 p-2.5 dark:border-neutral-800">
-              <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100">1. Hosting &amp; Frontend: </span>
+              <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100">1. Hosting & Frontend: </span>
               <span className="text-neutral-600 dark:text-neutral-400">Cloudflare Pages or Vercel (Fast edge CDN, zero monthly cost).</span>
             </div>
             <div className="border border-neutral-200 p-2.5 dark:border-neutral-800">
-              <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100">2. Database &amp; Inventory: </span>
+              <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100">2. Database & Inventory: </span>
               <span className="text-neutral-600 dark:text-neutral-400">Supabase (500MB free PostgreSQL) or Google Sheets as real-time CMS.</span>
             </div>
             <div className="border border-neutral-200 p-2.5 dark:border-neutral-800">
@@ -124,38 +116,14 @@ export default function StoreBlueprintModal({ isOpen, onClose }: StoreBlueprintM
               <span className="text-neutral-600 dark:text-neutral-400">Free Telegram bot or Discord webhook directly pinging your phone.</span>
             </div>
             <div className="border border-neutral-200 p-2.5 dark:border-neutral-800">
-              <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100">5. Marketing &amp; Analytics: </span>
-              <span className="text-neutral-600 dark:text-neutral-400">Plausible self-hosted / Cloudflare Web Analytics (GDPR-ready &amp; free).</span>
+              <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100">5. Marketing & Analytics: </span>
+              <span className="text-neutral-600 dark:text-neutral-400">Plausible self-hosted / Cloudflare Web Analytics (GDPR-ready & free).</span>
             </div>
           </div>
-        </div>
-
-        {/* Pro Kit Callout */}
-        <div className="mt-5 border-2 border-emerald-500 bg-emerald-50/50 p-4 dark:border-emerald-500/40 dark:bg-emerald-950/20">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="font-mono text-[10px] font-bold text-emerald-800 dark:text-emerald-300 uppercase">
-                WANT THE PRE-BUILT CODE &amp; REPO?
-              </div>
-              <div className="text-xs font-bold text-neutral-900 dark:text-white mt-0.5">
-                Get the Full Production Next.js Starter Kit
-              </div>
-            </div>
-            <div className="font-mono text-sm font-black text-emerald-700 dark:text-emerald-400">
-              ₹499 <span className="line-through text-xs font-normal text-neutral-400">₹1,999</span>
-            </div>
-          </div>
-          <button
-            onClick={handleGetProCode}
-            className="pixel-press mt-3 flex w-full items-center justify-center gap-2 border border-emerald-600 bg-[#10B981] py-2 font-mono text-xs font-bold text-black shadow-[2px_2px_0px_0px_#000] hover:bg-emerald-400 dark:border-emerald-400 dark:shadow-[2px_2px_0px_0px_#fff]"
-          >
-            <ShoppingBag className="h-3.5 w-3.5" />
-            <span>ADD PRO CODE TO CART (₹499)</span>
-          </button>
         </div>
 
         {/* Action buttons */}
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4 dark:border-neutral-800">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4 dark:border-neutral-800">
           <button
             onClick={handleCopy}
             className="pixel-press flex items-center gap-1.5 border border-neutral-900 bg-neutral-900 px-3 py-1.5 text-xs font-mono text-white shadow-[2px_2px_0px_0px_#000] hover:bg-neutral-800 dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 dark:shadow-[2px_2px_0px_0px_#fff] dark:hover:bg-neutral-200"

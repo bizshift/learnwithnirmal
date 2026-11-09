@@ -88,6 +88,32 @@ export default function GuideModal({ guide, onClose }: GuideModalProps) {
           <p className="text-sm leading-relaxed">{guide.summary}</p>
         </div>
 
+        {/* Interactive Playbook Feature Callout if windows-app-beginner-guide */}
+        {guide.id === 'windows-app-beginner-guide' && (
+          <div className="mt-4 border border-emerald-500 bg-emerald-50/70 p-3.5 dark:border-emerald-500/40 dark:bg-emerald-950/30">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs font-bold text-emerald-800 dark:text-emerald-300">
+                ⚡ FULL INTERACTIVE PLAYBOOK AVAILABLE
+              </span>
+              <span className="border border-emerald-600 bg-[#10B981] px-1.5 py-0.2 font-mono text-[9px] font-bold text-black uppercase">
+                NEW
+              </span>
+            </div>
+            <p className="mt-1 text-xs text-neutral-700 dark:text-neutral-300">
+              Includes a live AI prompt generator for Claude/ChatGPT, copy-paste .NET 10 terminal commands, an interactive timer simulator, and pre-flight verification checklist.
+            </p>
+            <div className="mt-2.5">
+              <Link
+                href="/guide/windows-app-beginner-guide"
+                className="pixel-press inline-flex items-center gap-1.5 border border-emerald-600 bg-[#10B981] px-3 py-1.5 font-mono text-xs font-bold text-black shadow-[1.5px_1.5px_0px_0px_#000] hover:bg-emerald-400 dark:border-emerald-400 dark:shadow-[1.5px_1.5px_0px_0px_#fff]"
+              >
+                <span>LAUNCH INTERACTIVE GUIDE</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </div>
+        )}
+
         {/* Steps */}
         <div className="mt-6 space-y-5">
           {guide.keySteps.map((step, idx) => (

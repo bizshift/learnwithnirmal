@@ -27,9 +27,10 @@ test('what I do pillars contain Brand, Build, Automate, Grow', () => {
   assert.deepEqual(pillars, ['Brand.', 'Build.', 'Automate.', 'Grow.']);
 });
 
-test('free guides contain the four requested guides with steps', () => {
-  assert.equal(FREE_GUIDES.length, 4);
+test('free guides contain the requested guides with steps', () => {
+  assert.ok(FREE_GUIDES.length >= 5);
   const guideTitles = FREE_GUIDES.map(g => g.title);
+  assert.ok(guideTitles.includes('Build your first Windows utility with AI'));
   assert.ok(guideTitles.includes('ComfyUI fixes'));
   assert.ok(guideTitles.includes('Free AI video tools'));
   assert.ok(guideTitles.includes('Open-source alternatives'));

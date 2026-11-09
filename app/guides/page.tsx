@@ -92,7 +92,7 @@ export default function GuidesDirectoryPage() {
                       href={`/guide/${guide.id}`}
                       className="pixel-press inline-flex items-center gap-1 border border-neutral-900 bg-neutral-900 px-3 py-1 text-xs font-mono font-semibold text-white shadow-[1px_1px_0px_0px_#000] hover:bg-neutral-800 dark:border-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 dark:shadow-[1px_1px_0px_0px_#fff]"
                     >
-                      <span>READ GUIDE</span>
+                      <span>{guide.readTime.includes('Interactive') ? 'OPEN INTERACTIVE PLAYBOOK' : 'READ GUIDE'}</span>
                       <span>→</span>
                     </Link>
                   </div>

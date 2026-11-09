@@ -15,21 +15,12 @@ This repository includes dedicated showcases, documentation, and live preview ga
 
 ---
 
-## 🛒 Abandoned Cart & Drip Campaign Engine
+## 📖 Interactive Playbooks & Guides
 
-This repository features a built-in abandoned cart recovery and multi-stage drip campaign engine:
-
-* **Interactive Slide-Over Cart Drawer (`CartDrawer.tsx`):** Digital product checkout with live order summary, coupon codes (`COMEBACK15`, `NIRMAL10`), and real-time email lead capture.
-* **Exit-Intent Detection (`ExitIntentModal.tsx`):** Automatically triggers when visitors move to exit the tab with unpurchased items, presenting a 15% discount voucher.
-* **3-Stage Automated Drip Sequence (`lib/drip-campaign.ts`):**
-  * **Stage 1 (30 Mins):** *The Helpful Nudge* — 1-click cart restoration.
-  * **Stage 2 (24 Hours):** *The Trust & Social Proof Follow-Up* — Overcoming objections with student case studies.
-  * **Stage 3 (72 Hours):** *The 15% Urgency Closer* — Expiring reservation countdown with coupon `COMEBACK15`.
-* **Drip Control Center & Studio (`/drip-campaign`):**
-  * Interactive desktop/mobile preview of all 3 HTML email templates.
-  * One-click HTML export for Brevo, Resend, Klaviyo, Loops, or Mailchimp.
-  * Real-time abandoned cart log, recovery rate tracking, and test simulation tools.
-* **Cart API (`/api/cart`):** Endpoints for saving carts, tracking abandonments, simulating drip triggers, and tracking recovery analytics.
+- **[Build Your First Windows Utility with AI](/build-windows-app)** — Complete step-by-step interactive playbook with live AI prompt studio for Claude/ChatGPT, .NET 10 WPF starter commands, live FocusTimer desktop widget simulator, and pre-flight verification checklist.
+- **[ComfyUI Optimization Fixes](/guide/comfyui-fixes)** — Memory, VRAM, and custom node troubleshooting.
+- **[Free AI Video Tools](/guide/free-ai-video-tools)** — Open-weights video generation and prompting recipes.
+- **[Open-Source Stacks](/guide/open-source-alternatives)** — High-leverage zero-subscription software alternatives.
 
 ---
 

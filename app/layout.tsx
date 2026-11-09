@@ -1,9 +1,5 @@
 import type {Metadata} from 'next';
 import './globals.css';
-import { CartProvider } from '@/lib/cart-context';
-import CartDrawer from '@/components/CartDrawer';
-import ExitIntentModal from '@/components/ExitIntentModal';
-import CartFloatingButton from '@/components/CartFloatingButton';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.APP_URL || 'http://localhost:3000'),
@@ -25,12 +21,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white dark:bg-[#111111] dark:text-neutral-100 dark:selection:bg-white dark:selection:text-black" suppressHydrationWarning>
-        <CartProvider>
-          {children}
-          <CartDrawer />
-          <ExitIntentModal />
-          <CartFloatingButton />
-        </CartProvider>
+        {children}
       </body>
     </html>
   );

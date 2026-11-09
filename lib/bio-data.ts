@@ -333,6 +333,65 @@ export const FEATURED_PRODUCT = {
 
 export const FREE_GUIDES: GuideItem[] = [
   {
+    id: "windows-app-beginner-guide",
+    title: "Build your first Windows utility with AI",
+    category: "Windows & AI Dev",
+    readTime: "5 min read · Interactive",
+    updatedDate: "New Interactive Guide",
+    coverImage: "/assets/images/pixel_creator_studio_1793867589555.jpg",
+    description: "Pick one task you repeat on Windows and build a small utility that saves you a step. Complete with live prompt generator, starter commands, and verification checklist.",
+    summary: "A practical, step-by-step playbook to build, verify, and publish standalone Windows tools using AI assistants (Claude, ChatGPT, Cursor, Antigravity) and .NET 10.",
+    keySteps: [
+      {
+        heading: "1. Pick one job for your app",
+        points: [
+          "Write the problem and the action in one sentence. For example: 'I want to start a 25-minute work session, pause it when interrupted, and resume with the same time left.'",
+          "Keep the first version small enough to test in a minute (start, pause, resume, reset, and saved preferences).",
+          "Match your idea to an archetype: PC Console (system telemetry), Little Notes (local text), Third Space (focus timer), or Orbit (file automation)."
+        ]
+      },
+      {
+        heading: "2. Open and run your starter project",
+        points: [
+          "Verify .NET 10 SDK with 'dotnet --list-sdks'.",
+          "Generate a minimal WPF desktop template: 'dotnet new wpf --name FocusTimer --output .\\src\\FocusTimer --framework net10.0'.",
+          "Build and run immediately to ensure the starter window compiles before adding any AI code."
+        ]
+      },
+      {
+        heading: "3. Paste the master prompt into your coding assistant",
+        points: [
+          "Provide a clear problem, first-version constraints (whole-number 1-180m, single timer guard, controllable clock).",
+          "Specify local-first storage under %LOCALAPPDATA%\\FocusTimer\\settings.json with fallback defaults.",
+          "Instruct the assistant to inspect the baseline project, report files changed, and provide manual check steps."
+        ]
+      },
+      {
+        heading: "4. Build in small steps & reproduce bugs",
+        points: [
+          "Step 1: Core countdown logic with controllable clock mock.",
+          "Step 2: Single setting persistence to disk.",
+          "Step 3: Connect UI buttons to timer actions.",
+          "Step 4: Use the structured bug report template (reproduction steps, expected vs actual result) for clean 1-shot fixes."
+        ]
+      },
+      {
+        heading: "5. Verify before sharing",
+        points: [
+          "Run the 6-point pre-flight checklist: double-start guard, pause/resume time freezing, reset fidelity, zero-stop completion, and restart persistence.",
+          "Test offline under an unprivileged standard Windows user account."
+        ]
+      },
+      {
+        heading: "6. Publish a self-contained Windows executable",
+        points: [
+          "Publish standalone x64 binary: 'dotnet publish -c Release -r win-x64 --self-contained true -o .\\artifacts\\win-x64'.",
+          "Test the compiled .exe directly, zip the artifacts folder, and test on a secondary Windows PC."
+        ]
+      }
+    ]
+  },
+  {
     id: "comfyui-fixes",
     title: "ComfyUI fixes",
     category: "AI & Workflows",

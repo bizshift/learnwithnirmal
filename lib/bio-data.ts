@@ -67,6 +67,8 @@ export interface FreeAppItem {
   demoUrl?: string;
 }
 
+export const R2_APPS_BASE_URL = "https://pub-95b34bd26a304d5c8afd01e3756e6d72.r2.dev";
+
 export const FREE_APPS: FreeAppItem[] = [
   {
     id: "pc-console",
@@ -74,7 +76,7 @@ export const FREE_APPS: FreeAppItem[] = [
     tagline: "Windows hardware telemetry & alien colony monitor",
     description: "A compact Windows hardware monitor, process explorer, and animated alien colony reflecting system activity. Track CPU, RAM, GPU, disk, network throughput, and run quick optimizations.",
     githubUrl: "https://github.com/rizo8107/pc-console",
-    downloadUrl: "https://github.com/rizo8107/pc-console/releases/latest/download/PC-Console.exe",
+    downloadUrl: `${R2_APPS_BASE_URL}/PC-Console.exe`,
     downloadFileName: "PC-Console.exe",
     downloadLabel: "Download .exe",
     coverImage: "/assets/images/app_pc_console.png",
@@ -128,7 +130,7 @@ export const FREE_APPS: FreeAppItem[] = [
     tagline: "Tactile sticky notes & playful desktop companions",
     description: "Tactile paper sticky notes for your Windows desktop with curled corners, tape, pushpins, and animated desktop cat companions that walk, play, and nap.",
     githubUrl: "https://github.com/rizo8107/little-notes",
-    downloadUrl: "https://github.com/rizo8107/little-notes/releases/download/v1.0.10/Little-Notes-Setup-1.0.10.exe",
+    downloadUrl: `${R2_APPS_BASE_URL}/Little-Notes-Setup-1.0.10.exe`,
     downloadFileName: "Little-Notes-Setup-1.0.10.exe",
     downloadLabel: "Download Setup .exe",
     coverImage: "/assets/images/app_little_notes.png",
@@ -177,9 +179,9 @@ export const FREE_APPS: FreeAppItem[] = [
     tagline: "Quiet Windows workspace for tasks & deep focus",
     description: "A quiet Windows desktop workspace for tasks, notes, reminders, and focus. Pins to any monitor edge to reserve a resizable strip of desktop alongside active windows.",
     githubUrl: "https://github.com/rizo8107/third-space",
-    downloadUrl: "https://github.com/rizo8107/third-space/releases/download/v1.7.0/ThirdSpace-v1.7.0-win-x64.zip",
-    downloadFileName: "ThirdSpace-v1.7.0-win-x64.zip",
-    downloadLabel: "Download Win x64 .zip",
+    downloadUrl: `${R2_APPS_BASE_URL}/ThirdSpace.exe`,
+    downloadFileName: "ThirdSpace.exe",
+    downloadLabel: "Download .exe",
     coverImage: "/assets/images/app_third_space.png",
     bannerImage: "/assets/images/banner_third_space.png",
     badge: "Open Source",
@@ -216,9 +218,9 @@ export const FREE_APPS: FreeAppItem[] = [
     tagline: "Windows action wheel & gesture file converter",
     description: "A native Windows mouse gesture action wheel, curved format conversion studio, video downloader, and custom workflow workspace triggered instantly with a gesture.",
     githubUrl: "https://github.com/rizo8107/orbit",
-    downloadUrl: "https://github.com/rizo8107/orbit/releases/latest/download/Orbit-Setup-0.12.0-Windows-x64.exe",
-    downloadFileName: "Orbit-Setup-0.12.0-Windows-x64.exe",
-    downloadLabel: "Download Setup .exe",
+    downloadUrl: `${R2_APPS_BASE_URL}/Orbit.exe`,
+    downloadFileName: "Orbit.exe",
+    downloadLabel: "Download .exe",
     coverImage: "/assets/images/app_orbit.png",
     bannerImage: "/assets/images/banner_orbit.png",
     badge: "Open Source",

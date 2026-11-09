@@ -7,4 +7,7 @@ coverage/
 !.env.example
 .aistudio/
 *.tsbuildinfo
+secret
+secret*
+
 

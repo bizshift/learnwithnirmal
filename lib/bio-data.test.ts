@@ -68,7 +68,11 @@ test('free apps contain pc-console, little-notes, third-space, and orbit with va
 
   for (const app of FREE_APPS) {
     assert.ok(app.githubUrl.startsWith('https://github.com/rizo8107/'), `App ${app.title} must have rizo8107 repo link`);
-    assert.ok(app.downloadUrl?.startsWith('https://github.com/rizo8107/'), `App ${app.title} must have direct download link`);
+    assert.ok(
+      app.downloadUrl?.startsWith('https://pub-95b34bd26a304d5c8afd01e3756e6d72.r2.dev/') ||
+      app.downloadUrl?.startsWith('https://github.com/rizo8107/'),
+      `App ${app.title} must have direct download link`
+    );
     assert.ok(app.downloadFileName?.length, `App ${app.title} must have downloadFileName`);
     assert.ok(app.coverImage.startsWith('/assets/images/'));
     assert.ok(app.features.length >= 3);

@@ -121,9 +121,6 @@ export default function Home() {
       <main className="w-full">
         {activeTab === 'bio' ? (
           <BioLinkView
-            onSelectGuide={(guide) => setSelectedGuide(guide)}
-            onOpenStoreModal={() => setIsStoreModalOpen(true)}
-            onOpenPlayground={() => setIsPlaygroundOpen(true)}
             onOpenContact={() => setIsContactOpen(true)}
             onSwitchToStory={() => setActiveTab('story')}
           />

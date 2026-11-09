@@ -13,9 +13,9 @@ import {
 } from './PixelIcons';
 
 interface BioLinkViewProps {
-  onSelectGuide: (guide: GuideItem) => void;
-  onOpenStoreModal: () => void;
-  onOpenPlayground: () => void;
+  onSelectGuide?: (guide: GuideItem) => void;
+  onOpenStoreModal?: () => void;
+  onOpenPlayground?: () => void;
   onOpenContact: () => void;
   onSwitchToStory: () => void;
 }
@@ -248,16 +248,13 @@ export default function BioLinkView({
             className="mt-2 flex overflow-x-auto gap-2.5 pb-2 pt-0.5 scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {FREE_GUIDES.map((guide) => (
-              <div
+              <Link
                 key={guide.id}
+                href={`/guide/${guide.id}`}
                 className="group flex w-[128px] sm:w-[136px] shrink-0 snap-start flex-col overflow-hidden border border-neutral-900 bg-white text-left shadow-[2px_2px_0px_0px_#000] hover:bg-neutral-50 dark:border-neutral-100 dark:bg-[#161616] dark:shadow-[2px_2px_0px_0px_#fff] dark:hover:bg-neutral-900"
               >
                 {/* 1:1 Square Pixel Art Cover */}
-                <button
-                  onClick={() => onSelectGuide(guide)}
-                  className="relative aspect-square w-full overflow-hidden border-b border-neutral-900 bg-neutral-950 dark:border-neutral-800 text-left cursor-pointer"
-                  aria-label={`Open guide modal: ${guide.title}`}
-                >
+                <div className="relative aspect-square w-full overflow-hidden border-b border-neutral-900 bg-neutral-950 dark:border-neutral-800 text-left">
                   <Image
                     src={guide.coverImage || '/assets/images/pixel_comfyui.jpg'}
                     alt={guide.title}
@@ -270,34 +267,27 @@ export default function BioLinkView({
                   <div className="absolute bottom-1 right-1 border border-black bg-black/85 px-1 py-0.2 font-mono text-[8px] font-bold text-white uppercase backdrop-blur-xs">
                     {guide.readTime.replace(' read', '')}
                   </div>
-                </button>
+                </div>
 
                 {/* Card Title & Meta Info */}
                 <div className="flex flex-1 flex-col justify-between p-2">
-                  <button
-                    onClick={() => onSelectGuide(guide)}
-                    className="text-[11px] font-bold leading-snug text-neutral-900 hover:underline dark:text-neutral-100 truncate text-left"
-                  >
+                  <div className="text-[11px] font-bold leading-snug text-neutral-900 group-hover:underline dark:text-neutral-100 truncate text-left">
                     {guide.title}
-                  </button>
+                  </div>
                   <div className="mt-1.5 flex items-center justify-between font-mono text-[8.5px] text-neutral-400 dark:text-neutral-500 uppercase">
                     <span className="truncate pr-1">{guide.category}</span>
-                    <Link
-                      href={`/guide/${guide.id}`}
-                      className="font-bold text-neutral-900 hover:underline dark:text-neutral-100"
-                      title="Open individual shareable page"
-                    >
-                      ↗
-                    </Link>
+                    <span className="font-bold text-neutral-900 dark:text-neutral-100 group-hover:translate-x-0.5 transition-transform">
+                      →
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
 
-            {/* 5th Card: ₹0 Online Store Blueprint */}
-            <button
-              onClick={onOpenStoreModal}
-              className="pixel-press group flex w-[128px] sm:w-[136px] shrink-0 snap-start flex-col overflow-hidden border border-neutral-900 bg-white text-left shadow-[2px_2px_0px_0px_#000] hover:bg-neutral-50 dark:border-neutral-100 dark:bg-[#161616] dark:shadow-[2px_2px_0px_0px_#fff] dark:hover:bg-neutral-900 cursor-pointer"
+            {/* 5th Card: ₹0 Online Store Blueprint - Direct Individual Page Link */}
+            <Link
+              href="/store-blueprint"
+              className="pixel-press group flex w-[128px] sm:w-[136px] shrink-0 snap-start flex-col overflow-hidden border border-neutral-900 bg-white text-left shadow-[2px_2px_0px_0px_#000] hover:bg-neutral-50 dark:border-neutral-100 dark:bg-[#161616] dark:shadow-[2px_2px_0px_0px_#fff] dark:hover:bg-neutral-900"
               aria-label="Read Blueprint: Build online store for ₹0"
             >
               <div className="relative aspect-square w-full overflow-hidden border-b border-neutral-900 bg-neutral-950 dark:border-neutral-800">
@@ -321,11 +311,11 @@ export default function BioLinkView({
                 <div className="mt-1.5 flex items-center justify-between font-mono text-[8.5px] text-neutral-400 dark:text-neutral-500 uppercase">
                   <span className="truncate pr-1">Commerce</span>
                   <span className="font-bold text-neutral-900 dark:text-neutral-100 group-hover:translate-x-0.5 transition-transform">
-                    ↗
+                    →
                   </span>
                 </div>
               </div>
-            </button>
+            </Link>
 
             {/* 6th Card: View More Guides Link Card */}
             <Link
@@ -370,8 +360,8 @@ export default function BioLinkView({
               <span className="font-mono text-[10px] text-neutral-400">→</span>
             </button>
 
-            <button
-              onClick={onOpenPlayground}
+            <Link
+              href="/playground"
               className="pixel-press flex items-center justify-between border border-neutral-900 bg-white px-2.5 py-2 text-left shadow-[1px_1px_0px_0px_#000] hover:bg-neutral-50 dark:border-neutral-100 dark:bg-[#161616] dark:shadow-[1px_1px_0px_0px_#fff] dark:hover:bg-neutral-900"
             >
               <div className="flex items-center gap-1.5">
@@ -379,10 +369,10 @@ export default function BioLinkView({
                 <span className="text-xs font-bold text-neutral-900 dark:text-neutral-100">Playground</span>
               </div>
               <span className="font-mono text-[10px] text-neutral-400">✳</span>
-            </button>
+            </Link>
 
-            <button
-              onClick={onOpenStoreModal}
+            <Link
+              href="/store-blueprint"
               className="pixel-press flex items-center justify-between border border-neutral-900 bg-white px-2.5 py-2 text-left shadow-[1px_1px_0px_0px_#000] hover:bg-neutral-50 dark:border-neutral-100 dark:bg-[#161616] dark:shadow-[1px_1px_0px_0px_#fff] dark:hover:bg-neutral-900"
               title="Build online store for ₹0 blueprint"
             >
@@ -391,7 +381,7 @@ export default function BioLinkView({
                 <span className="text-xs font-bold text-neutral-900 dark:text-neutral-100">₹0 Store</span>
               </div>
               <span className="font-mono text-[10px] text-neutral-400">↗</span>
-            </button>
+            </Link>
           </div>
         </section>
 

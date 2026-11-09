@@ -1085,3 +1085,4 @@ dotnet publish .\\src\\${appName}\\${appName}.csproj -c Release -r win-x64 --sel
     </div>
   );
 }
+

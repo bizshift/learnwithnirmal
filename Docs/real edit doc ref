@@ -1,0 +1,1456 @@
+CLAUDE AI EDITS MY REELS@theroshankrishna
+
+
+SETUP GUIDE
+
+Claude AI Edits
+
+My Reels
+
+Every skill, plugin, folder and prompt I use to edit a full Instagram reel end to end — captions, B-roll, motion graphics, sound effects and final export — without opening a timeline.
+
+
+Roshan Krishna   ·   @theroshankrishna
+
+Version 1.0  ·  November 2026
+
+WHAT YOU WILL HAVE AT THE END
+
+A folder on your computer that you drop raw footage into, and one prompt that turns it into a finished, captioned, sound-designed 1080x1920 reel with custom motion graphics — rendered by code, not by you dragging clips.
+
+Everything here runs inside the Claude desktop app. No terminal app, no code knowledge. Total setup is about 30 minutes, once.
+
+
+Watch the reel this guide comes from
+This is the full breakdown of the reel where I showed that Claude AI edited my last three videos — including the one you were watching.
+
+Reel: instagram.com/theroshankrishna
+
+If anything here is unclear, reply to the reel or DM me. I read everything.
+
+What is inside
+Part 1   Read this first — what this actually is, honestly
+
+Part 2   Set up Claude Code (inside the desktop app)
+
+Part 3   The folder — Raw, Reference, Resources, Export
+
+Part 4   The toolchain — four tools, installed from inside the app
+
+Part 5   The skills and plugins — all nine, with install commands
+
+Part 6   The 18 video effects
+
+Part 7   The prompt
+
+Part 8   What Claude actually does, step by step
+
+Part 9   Revisions — how to talk to it like an editor
+
+Part 10   Troubleshooting
+
+Part 11   Limits — what it is still bad at
+
+Part 12   Go deeper — a video tutorial that takes the other route
+
+Part 13   Credits and licences
+
+Appendix   The one-shot install block and the folder map
+
+
+PART 1
+
+Read this first
+What this actually is
+Claude is not a video editor with buttons. What it does is write code that builds your video, then render that code to an MP4.
+
+The engine is Remotion — a tool that makes videos out of React components, the same kind of code that makes websites. So a caption is not a text layer you drag, it is a line of code that says "show these words at 2.4 seconds, in SF Pro, on a black box at 93% opacity". A graphic is not a template, it is drawn fresh for your video.
+
+That is the whole trick, and it is why the output does not look like a template:
+
+Nothing is generic. Every animation is written for your line, at your timestamp, in your colours.
+It scales. Once Claude knows your style, the fiftieth reel takes the same effort as the first.
+It is repeatable. The edit is a file. You can change one number and re-render it a month later, exactly.
+
+THE HONEST VERSION
+
+You are not clicking a button. You are directing. You still watch the draft, tell Claude what feels off, and it fixes it — the same conversation you would have with a human editor, except this one works in code and never gets tired.
+
+Your first reel will take a couple of hours, because you are learning what to ask for. After that it is roughly 20 to 40 minutes of your attention per reel.
+
+How long each part takes
+Step
+
+First time
+
+Every reel after
+
+Setting up (Parts 2 to 5)
+
+~30 minutes
+
+Never again
+
+Building the folder (Part 3)
+
+~5 minutes
+
+Never again
+
+Teaching Claude your style
+
+One reel
+
+It reuses it
+
+Editing a 50-second reel
+
+~2 hours
+
+20-40 minutes
+
+Rendering the final file
+
+5-15 minutes
+
+5-15 minutes
+
+
+What it costs
+Everything here is free to use. Two things are worth knowing up front:
+
+Claude — the Code tab needs a paid plan (Pro, Max, Team or Enterprise). Pro is the cheapest way in. Your Code usage shares the same limits as the Claude app, so a heavy editing day eats into your chat usage.
+Remotion — free for individuals and for teams of up to 3 people, permanently. Above that it needs a company licence. If you are a solo creator you are covered. (remotion.dev/license)
+
+Mac, Windows or Linux
+I am on a MacBook Pro and the commands in Part 4 are written for macOS. The whole stack runs on Windows and Linux too — the only thing that changes is how you install those four base tools. Tell Claude which system you are on at the start of your session and it will give you the right commands.
+
+What you need before you start
+Thing
+
+Why
+
+Note
+
+Claude Pro, Max, Team or Enterprise
+
+The Code tab needs a paid plan
+
+Shares limits with the Claude app
+
+8 GB RAM minimum
+
+Rendering video in a browser engine
+
+16 GB or more is comfortable
+
+~15 GB free disk
+
+Models, render engine, your footage
+
+The AI models alone are about 3 GB
+
+Your raw footage, already trimmed
+
+Claude edits, it does not pick takes
+
+One clean MP4, shot 9:16
+
+
+ONE RULE THAT SAVES YOU AN HOUR
+
+Trim your raw footage before you hand it over. Cut the false starts, the dead air at the top, the part where you cough. Claude will cut silences and cover the stretches where you look away from camera, but it cannot know which of your four takes of a line is the good one. That judgement stays yours.
+
+
+PART 2
+
+Set up Claude Code
+Claude Code is the version of Claude that can read your files, run commands and write code. It used to be a terminal-only tool. It is not any more — it is built into the Claude desktop app, and that is how we are going to use it. You will never open a terminal app.
+
+2.1  Install the desktop app
+Download it for your computer:
+macOS: claude.com/download — one universal build for Intel and Apple Silicon
+Windows: the same page has the x64 installer, and a separate ARM64 one
+Linux: Ubuntu and Debian, via apt or .deb — see the Linux page
+Run the installer and launch Claude.
+Sign in with your Anthropic account.
+
+IF YOU ALREADY USE THE CLAUDE APP
+
+You still have everything you need — just make sure it is up to date. The Code tab appears in the sidebar at the top. If clicking it asks you to upgrade, your plan does not include Claude Code yet.
+
+2.2  Open the Code tab
+Click Code in the tabs at the top of the sidebar. If the tabs only show icons, hover over them to find it.
+
+This is the part people miss: the desktop app already contains Claude Code. You do not install Node.js or any command-line tool just to use the Code tab. (You will install a few tools in Part 4, but those are for the video engine, not for Claude.)
+
+2.3  The row under the prompt box
+Everything you need to set is in one row, directly under where you type. Left to right:
+
+Control
+
+What to set it to
+
+Why
+
+Environment
+
+The top entry in the Local group
+
+Runs on your computer, with access to your footage
+
+Project folder
+
+Open folder… then pick your AI Video Editor folder
+
+This is the folder Claude can see and work in
+
+Permission mode
+
+Start on Manual, move to Accept edits
+
+Decides whether Claude asks before each action
+
+Model
+
+The most capable one you have
+
+Editing is a long, detailed task
+
+
+We will create that folder in Part 3, so leave the folder control for now.
+
+2.4  Permission modes, and which to use
+This decides how much Claude can do without stopping to ask you. It matters here because an edit involves hundreds of file operations — approving each one by hand is painful, approving none of them is reckless.
+
+Mode
+
+What happens
+
+Use it when
+
+Manual
+
+Claude asks before editing a file or running a command
+
+Your first session, while you learn what it does
+
+Accept edits
+
+File edits apply automatically; it still asks before running other commands
+
+Normal editing. This is where I sit
+
+Auto
+
+A classifier blocks risky actions in the background instead of asking you
+
+Long unattended renders
+
+Plan
+
+Claude proposes an approach and changes nothing
+
+Talking through an edit before it starts
+
+
+START ON MANUAL FOR ONE SESSION
+
+Watch what it does for the first twenty minutes. You will approve the same handful of things repeatedly — reading your footage, running ffmpeg, writing a file — and once that looks normal to you, switch to Accept edits and stop thinking about it.
+
+2.5  Four things worth knowing on day one
+The terminal pane
+Press Ctrl + ` to open a terminal inside the app. It opens in your project folder and shares the same environment Claude uses. This is where you will paste the install commands in Part 4 — inside the app, not in a separate terminal app.
+
+@ to point at a file
+Type @ followed by a filename in the prompt box to pull that exact file into the conversation. @Raw/Raw footage.mp4 is faster and more reliable than describing it.
+
+Slash commands
+Type / to see every skill and command available. After Part 5 your installed skills will show up here — that is how you confirm they installed correctly.
+
+Interrupt whenever you like
+You do not have to wait for Claude to finish. Click stop, or just type a correction and press Enter. If you see it heading the wrong way at second 4 of a 50-second reel, say so immediately instead of waiting for the render.
+
+
+PART 3
+
+The folder
+This is the part that makes the whole thing work. Claude is good at editing when it knows where everything lives. Four subfolders, fixed names, and it never has to guess.
+
+3.1  Build it
+In Finder (or File Explorer), make a folder called AI Video Editor. Downloads is fine. Inside it, make four folders:
+
+AI Video Editor/
+
+├── Raw/          your trimmed footage
+
+├── Reference/    your old reels — the style to copy
+
+├── Resources/    music, logos, B-roll you already have
+
+└── Export/       where the finished reel lands
+
+
+Then go back to the Code tab, click the project folder control, choose Open folder…, and select AI Video Editor. That is the setup done — Claude can now see all four.
+
+WHY THE NAMES MATTER
+
+Keep these four names exactly as they are. Every prompt in this guide, and the skill in Part 6, refers to them. If you rename Reference to "Refs", you will have to explain that every single session.
+
+3.2  Raw — your footage
+One trimmed MP4 of you talking. Shot vertical, 9:16. Mine come straight off an iPhone with an external mic, so video and audio are one file — that is what Claude expects.
+
+Trim it first. Cut false starts and retakes. Leave the good take only.
+Leave the look-aways in. The parts where you turn to read your script off a screen — leave them. Claude keeps your audio and covers the picture with B-roll or a graphic. That is a feature, not a problem to fix.
+Do not add captions or music yourself. Claude does both, and pre-burnt captions can never be removed.
+4K is fine. Claude makes a smaller working copy to edit against, and goes back to the original for the final render.
+3.3  Reference — your style
+This is the folder people skip, and it is the one that decides whether the output looks like you or looks like AI.
+
+Drop in 3 to 7 of your own past reels — the ones you were happy with. Claude watches them and pulls out your actual style: how fast you cut, where your captions sit, what your graphics look like, how your hook is paced.
+
+You can also drop in a plain text file with links to other creators whose editing you want to borrow from. Claude cannot watch an Instagram link directly, so save the video itself into the folder, or screen-record 10 seconds of it and drop that in instead.
+
+IF YOU ARE STARTING FROM ZERO
+
+No past reels you like? Put in 3 to 5 reels from creators whose editing you admire, and say so in your prompt: "match the pacing and caption style of the references, but keep the colours in Resources." It works, and by reel three you will have your own references to swap in.
+
+3.4  Resources — the things only you have
+Everything Claude cannot make or download itself:
+
+What
+
+Format
+
+Why Claude needs it from you
+
+Background music
+
+MP3 or WAV
+
+Licensed music cannot be downloaded automatically
+
+Your logo / profile picture
+
+PNG, transparent
+
+Used in end cards and reel mockups
+
+Brand logos you want on screen
+
+PNG
+
+Official marks, so they are not drawn wrong
+
+Risers, whooshes you like
+
+MP3 or WAV
+
+Your signature sounds, on top of the built-in bank
+
+Screen recordings, B-roll
+
+MP4
+
+Anything that has to come from your screen
+
+
+Name them in plain words — background-music.mp3, not track_final_v3_USE_THIS.mp3. Claude picks files by name.
+
+3.5  Export — the finished reel
+Leave it empty. The rendered MP4 lands here, named and ready to upload. I keep every version, so reel-v1.mp4, reel-v2.mp4, and so on — it costs nothing and lets you go back.
+
+3.6  File specs I use
+Setting
+
+Value
+
+Note
+
+Resolution
+
+1080 x 1920
+
+Instagram downscales anything bigger anyway
+
+Frame rate
+
+30 fps
+
+Match whatever you shot at
+
+Codec
+
+H.264, MP4
+
+The safest thing to upload
+
+Quality (CRF)
+
+16 to 18
+
+Lower is better quality and a bigger file
+
+Audio
+
+AAC, 320 kbps, 48 kHz
+
+Over-spec on purpose; Instagram re-compresses
+
+Loudness
+
+Around -11 LUFS, peaks under -1 dB
+
+Stops Instagram from squashing your audio
+
+
+PART 4
+
+The toolchain
+Four tools that do the actual video work. Claude drives them; you just have to put them on the machine once.
+
+You do not need a terminal app for this. Open the terminal pane inside Claude with Ctrl + ` and paste the commands there. Or skip the pasting entirely: in the Code tab, ask Claude to install Homebrew, Node, Python, ffmpeg and uv, then make a Python environment at ~/videotools with rembg, opencv-python-headless, sherpa-onnx and pocketsphinx, and approve each step as it goes.
+
+WHY NODE, WHEN THE APP ALREADY HAS CLAUDE CODE?
+
+The desktop app ships with Claude Code built in, so Claude itself needs nothing. Node.js here is for Remotion — the engine that builds and renders the video. Different job, same machine.
+
+4.1  Homebrew
+The package manager for command-line tools on a Mac. Everything else installs through it. Skip if you already have it — check with brew --version.
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+It explains what it will do and pauses for you to confirm. At the end it may print two lines starting with echo >> ~/.zprofile — run those too, then close and reopen the terminal pane.
+
+4.2  Node, Python, ffmpeg, uv
+brew install node python ffmpeg uv
+
+
+Tool
+
+What it does here
+
+Node.js
+
+Runs Remotion — builds the video and renders it
+
+Python
+
+Runs the cut-out and transcription models
+
+ffmpeg
+
+Reads, cuts, converts and muxes video and audio. The workhorse behind everything
+
+uv
+
+Installs Earshot, the sound effects tool
+
+
+NODE VERSION MATTERS
+
+The skills installer in Part 5 needs Node 22.20 or later. Check with node -v. If Homebrew gave you something older, run brew upgrade node.
+
+4.3  A Python home for the video tools
+macOS will not let you install Python packages system-wide any more — you get an externally-managed-environment error. Give the video tools their own environment instead. This one step prevents the most common error people hit.
+
+python3 -m venv ~/videotools
+
+~/videotools/bin/pip install --upgrade pip
+
+~/videotools/bin/pip install "rembg[cpu]" opencv-python-headless sherpa-onnx pocketsphinx
+
+
+About 1 GB, a few minutes. What each package does is in Part 5.
+
+TELL CLAUDE WHERE THIS IS
+
+At the start of an editing session, say: "the Python video tools are at ~/videotools/bin/python". Better still, put that line in a CLAUDE.md file in your folder (Part 5.10) so you never have to say it again.
+
+4.4  Check it all worked
+Paste this one block in the terminal pane. Every line should print a version, not an error.
+
+brew --version && node -v && python3 -V && ffmpeg -version | head -1 && uv --version \
+
+  && ~/videotools/bin/python -c "import rembg, sherpa_onnx, pocketsphinx; print('python tools ok')"
+
+
+Anything that fails, fix it before moving on. Part 10 has the usual errors and their fixes.
+
+
+PART 5
+
+The skills and plugins
+5.0  What a skill actually is
+A skill is a folder with a SKILL.md file in it — a set of written instructions Claude reads when the job matches. That is genuinely all it is. Nothing is installed into Claude itself; you are just leaving notes where it will find them.
+
+On your machine, personal skills live here:
+
+~/.claude/skills/<skill-name>/SKILL.md
+
+
+Claude loads a skill automatically when your request matches its description, or you can call it directly by typing /skill-name. Type / in the prompt box to see everything that is installed — that is how you verify each step below.
+
+Most of the skills here install with one command, using the open skills CLI. It copies the skill into the folder above.
+
+SKILLS VS PLUGINS
+
+A plugin is a bundle — it can carry several skills, plus agents, hooks and tool connections. In the desktop app you add plugins with the + button next to the prompt box, then Add plugins. Everything in this guide installs as a skill, which is simpler. Where a plugin exists too, I say so.
+
+5.1  Remotion — the engine
+What it is: a framework for making videos out of React code. It is the thing that actually draws every frame and renders the MP4. Without it, Claude can describe an edit but cannot produce one.
+
+What it gives you: real motion graphics — text that animates per word, cards that slide in on a spring, a timeline mockup, a phone frame, a number counting up. All drawn as code, at 1080x1920, at whatever frame rate you shot.
+
+Install: you do not install Remotion globally. It lives inside your project. Easiest path — in the Code tab, ask:
+
+Set up a Remotion project in this folder for a 1080x1920, 30fps reel.
+
+
+If you would rather do it yourself in the terminal pane:
+
+npx create-video@latest
+
+
+Then add the extra packages Claude uses for transitions, shapes, audio and captions:
+
+npm i @remotion/transitions @remotion/shapes @remotion/paths @remotion/noise \
+
+  @remotion/motion-blur @remotion/media @remotion/media-utils @remotion/captions \
+
+  @remotion/layout-utils
+
+
+Licence: free for individuals and teams of up to 3 people. A bigger company needs a paid licence. (remotion.dev/license)
+
+5.2  Remotion agent skills — official best practices
+What it is: the Remotion team's own set of skills that teach Claude how to write good Remotion code — how to time animations, build captions, handle audio and video, and run a render.
+
+Why it matters: this is the difference between code that works and code that looks right. Without it Claude writes animations that technically run but feel mechanical.
+
+Install:
+
+npx skills@latest add remotion-dev/skills -g -a claude-code
+
+
+That installs remotion-best-practices, remotion-markup, remotion-captions, remotion-multimedia, remotion-render, remotion-create and more. Published and maintained by the Remotion team.
+
+5.3  Anatomy — isometric explainer graphics
+What it is: a skill that draws detailed isometric diagrams as code — a machine, a rig, a system, a process, drawn as a real-looking object with proper shading and animation.
+
+Why I use it: when a line in my script explains how something works, a plain text card is boring. This draws the thing. It is the single biggest reason my reels do not look like everyone else's, and almost nobody is using it for video.
+
+Install:
+
+npx skills add wheresryan22/anatomy -g -a claude-code
+
+
+Needs: Node 20.10 or later, and Chrome for its visual checks. Licence: MIT. Repo: github.com/wheresryan22/anatomy
+
+5.4  Earshot — the sound effects bank
+What it is: two things in one. A bank of 252 sound effects stored as code — clicks, pops, whooshes, risers, impacts, glitches, typing runs, notification dings — that render instantly with no downloads. And a set of ears: it can listen to audio and describe it, which lets Claude check its own mix.
+
+Why it matters: sound is most of what makes an edit feel expensive. The reel in this guide has about 95 sound cues placed frame-accurately against the words. Doing that by hand is hours of work.
+
+Install:
+
+uv tool install "earshot[mcp] @ git+https://github.com/Leonxlnx/earshot"
+
+earshot doctor --fetch
+
+
+The second line downloads its two listening models, about 1.1 GB. You can skip it if you only want the sound bank — the effects themselves need no models and no network.
+
+Then add its two skills so Claude knows how to use it:
+
+git clone https://github.com/Leonxlnx/earshot ~/earshot-src
+
+mkdir -p ~/.claude/skills
+
+cp -r ~/earshot-src/skills/earshot ~/earshot-src/skills/real-sound ~/.claude/skills/
+
+
+There is one more optional step — connecting Earshot to Claude as a tool, so Claude can listen to a file on request rather than just placing sounds. It needs the separate terminal version of Claude Code, so skip it unless you have that; the sound bank works fully without it.
+
+claude mcp add earshot --scope user -e EARSHOT_THREADS=3 -- earshot mcp
+
+
+Licence: MIT. Repo: github.com/Leonxlnx/earshot
+
+5.5  Design and motion skills
+What they are: a set of skills by Emil Kowalski, a design engineer who worked at Vercel and Linear, on how motion should actually feel — which easing curve to use, how long an animation should run, what to stagger, and when not to animate at all.
+
+Why it matters: this is taste, written down. It is the reason things land with a soft overshoot instead of sliding in flatly, and the reason the edit does not have an animation on every single element.
+
+Install:
+
+npx skills@latest add emilkowalski/skills -g -a claude-code
+
+
+The ones that matter for video: apple-design (Apple's motion principles), animate, choreograph (coordinating several things moving at once), animation-vocabulary and review-animations. Licence: MIT. Repo: github.com/emilkowalski/skills
+
+5.6  Thinking Orbs — the "AI is working" animation
+What it is: nine animated dot-orbs built for AI interfaces — searching, working, solving, listening, connecting, weaving, composing, breathing, shaping. Drawn on a plain canvas, so they render fast and look identical everywhere.
+
+Why I use it: any shot where Claude is thinking or processing. It reads instantly and beats a spinner.
+
+Install (inside your Remotion project, not globally):
+
+npm install thinking-orbs
+
+
+One catch worth knowing: the package animates off the browser clock, which does not work in a frame-by-frame render. Ask Claude for "a frame-driven Remotion wrapper around thinking-orbs" and it will write the small adapter that fixes it. Licence: MIT. Repo: github.com/Jakubantalik/thinking-orbs
+
+5.7  rembg — cutting you out of the background
+What it is: a background-removal model. It separates you from the room, per frame, so graphics can sit behind you.
+
+Why it matters: this is what makes a title rise up behind your head, or lets you break out of a shrinking reel card. It is the effect that reads as "professionally edited" more than any other, and it needs no green screen.
+
+Install: already done in Part 4.3. The model for people is u2net_human_seg and it downloads itself the first time it runs.
+
+Speed note: it processes each frame individually. Running it on a small copy of the footage and scaling the result up is much faster and looks the same — Claude does this by default. Licence: MIT (model weights carry their own licences).
+
+5.8  sherpa-onnx and pocketsphinx — word-perfect captions
+What they are: two speech tools. sherpa-onnx runs a Whisper model locally and writes down what you actually said. pocketsphinx then force-aligns that text against your audio to get the exact start and end time of every single word.
+
+Why both: the first gives you the words, the second gives you the timing. Together they are why the captions in my reels land on the beat instead of drifting, and why Claude knows that "Export" happens at 46.44 seconds and can drop a sound effect exactly there.
+
+Install: already done in Part 4.3. The Whisper model downloads on first use, from the sherpa-onnx releases page.
+
+Licences: sherpa-onnx is Apache 2.0, pocketsphinx is BSD.
+
+5.9  The 18 video effects
+This one is a skill you build yourself in two minutes, and it is worth its own section — Part 6.
+
+5.10  Fonts, and one file that saves you repeating yourself
+Claude uses the fonts already installed on your computer. I use SF Pro for captions and New York for the serif accents; both come from Apple's developer fonts page, free to download. Read Apple's licence before using them commercially — it is written around interface mock-ups. If you want a font with no questions attached, Inter from Google Fonts is free for anything and looks close.
+
+Now the file that saves you the most time. Create CLAUDE.md in your AI Video Editor folder. Claude reads it automatically at the start of every session, so your setup and style live there permanently instead of being re-typed:
+
+# My reel editing setup
+
+ 
+
+## Machine
+
+- Python video tools: ~/videotools/bin/python (rembg, sherpa-onnx, pocketsphinx)
+
+- ffmpeg and ffprobe are on PATH
+
+ 
+
+## My style — always
+
+- 1080x1920, 30fps, H.264, CRF 16, AAC 320k
+
+- Captions: SF Pro Display Bold, white, on a black box at 93% opacity
+
+- Dark background #0A0A0A, one accent colour only
+
+- Split screen: graphic on top, my face below, seam at y=940
+
+- Never colour-grade my face. Never change my voice.
+
+- Show me one still before any full render
+
+ 
+
+## Folders
+
+- Raw/ my footage · Reference/ my style · Resources/ my assets · Export/ output
+
+
+Change the style lines to your own. This single file is the difference between a good first draft and three rounds of corrections.
+
+5.11  The checklist
+#
+
+Skill or tool
+
+How to check it is there
+
+1
+
+Remotion
+
+A package.json in your folder with remotion in it
+
+2
+
+Remotion skills
+
+Type / — remotion-best-practices appears
+
+3
+
+Anatomy
+
+Type / — anatomy appears
+
+4
+
+Earshot + real-sound
+
+Type / — earshot and real-sound appear
+
+5
+
+Design and motion skills
+
+Type / — apple-design, animate appear
+
+6
+
+Thinking Orbs
+
+thinking-orbs in your package.json
+
+7
+
+rembg
+
+The verify command in 4.4 printed python tools ok
+
+8
+
+sherpa-onnx + pocketsphinx
+
+Same command
+
+9
+
+reel-effects (Part 6)
+
+Type / — reel-effects appears
+
+
+PART 6
+
+The 18 video effects
+6.1  Where these come from
+These are not mine. They come from a free Notion guide called "Create 18 Stunning Video Effects with Claude (No Timeline Needed)", written by another creator, and it is one of the most useful things I have found for this workflow. Full prompts and the house-style block are on their page:
+
+Open the original guide
+
+What I did was turn it into a skill, so Claude has all 18 available by name without me pasting anything. Credit where it is due — go and read their page.
+
+6.2  What the 18 are
+Group
+
+Use it for
+
+Effects
+
+Hooks
+
+Your first 3 seconds
+
+X-ray glitch hook · freeze frame · frame break
+
+Proof and numbers
+
+Results, stats, rankings
+
+Over-the-shoulder · glass graph · tier list
+
+Words on screen
+
+Titles and headlines
+
+Text behind · headline wall · paper cut
+
+Looks and motion
+
+A shift in mood or energy
+
+Colour grade · orbit · doodle boil
+
+Phones and screens
+
+Showing an app or a result
+
+Phone mockup · iPhone mockup · Apple UI toggles
+
+The workflow
+
+Showing how it was made
+
+Prompt studio · video timeline · pull-back reveal
+
+
+A few of them described properly, so you know what you are choosing between:
+
+Effect
+
+What actually happens on screen
+
+Frame break
+
+Your shot shrinks into an Instagram reel card while you stay full size, so your head and hands break out of the frame. Used in the hook of the reel this guide comes from.
+
+Freeze frame
+
+A white flash freezes you, the room drains to grey while you stay in colour, and a name pill lands under your chest.
+
+Text behind
+
+A big bold title rises letter by letter behind your head, with your hair overlapping the letters.
+
+Glass graph
+
+A frosted card rises at chest height, a number counts up and an orange line graph draws itself across it.
+
+Tier list
+
+An S-to-D ranking builds below your face and real logos drop into their rows one by one.
+
+Orbit
+
+Your other clips play on cards that orbit around you — near ones pass in front, far ones go behind.
+
+Pull-back reveal
+
+Your clip pulls back into a Claude Code window with a checklist ticking off beside it.
+
+Doodle boil
+
+A hand-drawn white outline traces around you and wobbles like stop-motion, with doodles drawing on beside your head.
+
+
+NINE OF THE EIGHTEEN NEED THE CUT-OUT
+
+These nine put something behind you, so they need rembg from Part 5.7: X-ray glitch hook, freeze frame, frame break, text behind, headline wall, paper cut, orbit, doodle boil and Apple UI toggles. The X-ray glitch hook also wants body-pose tracking to fit the skeleton to your arms — that is a separate model, so ask Claude to set it up, or let it fit the artwork to your outline instead.
+
+6.3  Turn them into a skill
+Two minutes, once. First copy the Notion page link — here it is again. Then, in the Code tab, paste this prompt and put that link where it says PASTE LINK:
+
+Create a skill at ~/.claude/skills/reel-effects/SKILL.md.
+
+ 
+
+Read this page: PASTE LINK
+
+ 
+
+Put all 18 effects into the skill, keeping each effect's prompt and
+
+the house style block.
+
+ 
+
+The description should say it is for my vertical talking-head reels
+
+and list all 18 effect names, so it triggers when I name one.
+
+ 
+
+Add a section at the top for my stack: Remotion for rendering, rembg
+
+(~/videotools/bin/python) for the person mask, earshot for sound.
+
+
+Then type / and check that reel-effects is in the list.
+
+6.4  Calling one
+Once the skill is in, you just name the effect:
+
+Use the frame-break effect on the hook, with my handle and a live view count.
+
+
+Or let Claude choose, which is what I usually do:
+
+Pick the right effect from reel-effects for this line and show me a still first.
+
+
+TWO OR THREE PER REEL, MAXIMUM
+
+All eighteen in one reel looks like a showreel, not a video. I use one in the hook, one or two in the body, and nothing in the CTA — the CTA should be your face. The effects are seasoning.
+
+
+PART 7
+
+The prompt
+This is the one I actually use. Open the Code tab with your AI Video Editor folder selected, paste it, and press Enter.
+
+7.1  The full prompt
+Edit my reel end to end.
+
+ 
+
+FOOTAGE
+
+- Raw/ has my trimmed talking-head footage. The audio is final:
+
+  never re-time it, never change my voice.
+
+- Reference/ has my past reels. Watch them and match my style —
+
+  pacing, caption placement, how the graphics look.
+
+- Resources/ has my music, logos and B-roll. Use only what is there.
+
+- Export/ is where the finished file goes.
+
+ 
+
+WHAT TO DO
+
+1. Transcribe my audio, then force-align it so you have the exact
+
+   start and end of every word.
+
+2. Find the stretches where I turn away from camera to read my script.
+
+   Keep my audio, drop the picture, and cover those with B-roll,
+
+   motion graphics or an effect from reel-effects.
+
+3. Caption every line in my style: SF Pro Display Bold, white, on a
+
+   black box at 93% opacity.
+
+4. Build the graphics in Remotion. Use anatomy for anything that
+
+   explains how something works.
+
+5. Sound-design it with earshot — a cue on every cut, every element
+
+   that lands, and every type-on.
+
+6. Render 1080x1920, 30fps, H.264, CRF 16, AAC 320k, and limit the
+
+   audio so it never clips.
+
+ 
+
+HOW TO WORK
+
+- Show me one still of the hook before you render anything.
+
+- Tell me the look-away timestamps you found before you build over them.
+
+- Two or three effects for the whole reel, not more.
+
+- When I ask for a change, change only that and keep the rest exactly.
+
+
+If you made the CLAUDE.md file in Part 5.10, most of this is already on file and you can cut the prompt down to the short version below.
+
+7.2  The short version
+Edit the footage in Raw/ in my style from Reference/.
+
+Cover the look-away shots. Captions, graphics, sound effects, then
+
+render to Export/. Show me a still of the hook first.
+
+
+7.3  Lines worth adding
+If you want
+
+Add this line
+
+A specific effect in the hook
+
+"Use the frame-break effect on the hook."
+
+Your old reels shown as proof
+
+"In the hook, flash the three reels in Resources/ as phone cards."
+
+A particular CTA
+
+"End on my face with a comment bar typing EDIT."
+
+Music under it
+
+"Put the track from Resources/ underneath at about -22 LUFS, ducked under my voice."
+
+A faster cut
+
+"Cut harder — nothing on screen for more than 1.5 seconds."
+
+Captions as a separate file
+
+"Also write the captions as an SRT in Export/, not only burned in."
+
+
+7.4  Always ask for a still first
+This is the single habit that saves the most time. A full render takes 5 to 15 minutes; a still takes 15 seconds. Checking the look on a still, then rendering once, is the whole game.
+
+Show me stills at 1.4s, 9.9s, 24.9s and 45.3s before you render.
+
+
+
+PART 8
+
+What Claude actually does
+You do not need to know this to use the workflow. You need it the moment something looks wrong, because then you can point at the step that broke instead of saying "it looks weird".
+
+The eight steps
+1 · Makes a working copy
+Your 4K footage is too heavy to edit against frame by frame, so it makes a 1080p copy and works on that. The final render still uses full quality.
+
+2 · Transcribes you
+Runs a Whisper model locally over your audio and writes down what you actually said — not what your script said. This matters: if you ad-libbed "Easy!" at the end, the captions say "Easy!".
+
+3 · Times every word
+Force-aligns that transcript against the audio to get the start and end of each word, to within about a frame. Everything downstream hangs off this: caption changes, animation starts, sound cues.
+
+4 · Finds the look-aways
+Runs scene detection over the video to find where the shot changes — which, in a static talking-head take, is exactly where you turned away to read. It gives you those timestamps to confirm.
+
+5 · Plans the scenes
+Maps every line of your script to a treatment: face on screen, split screen with a graphic above, or full-screen B-roll. The look-aways become full-screen graphics automatically.
+
+6 · Builds the graphics
+Writes the Remotion code for each scene — the Finder windows, the phone mockups, the timelines, the orbs, the counters. This is the slow part, and the part worth reviewing on a still.
+
+7 · Cuts you out, where needed
+Runs rembg over just the frames that need it, so graphics can sit behind you.
+
+8 · Sound, render, check
+Places the sound cues against the word timings, renders the whole thing, runs a limiter so the audio never clips, then checks the output frame by frame against the cut points.
+
+
+WHAT TO ASK WHEN SOMETHING IS OFF
+
+Name the step. "The captions drift after 30 seconds" is step 3. "It cut to B-roll while I was still on camera" is step 4. "The graphic looks generic" is step 6. Claude can go straight back to that stage instead of rebuilding everything.
+
+
+PART 9
+
+Revisions
+Your first draft will be 85% right. The last 15% is a conversation, and how you phrase it decides whether you get there in two rounds or ten.
+
+9.1  Be specific, with a timestamp
+Instead of
+
+Say
+
+"The hook is weak"
+
+"At 1.4s the cards land too slowly — make them snap in 0.2s with a harder impact."
+
+"Captions look off"
+
+"Captions are sitting too low in the split-screen scenes. Move them up 80px."
+
+"Too much going on"
+
+"Drop the orbit effect at 25s. Keep the folder scene plain."
+
+"Fix the audio"
+
+"The whoosh at 13.4s is louder than my voice. Bring it down about 6 dB."
+
+
+9.2  Protect what you already like
+The most useful sentence in the whole process:
+
+Change only that. Everything else stays exactly as it is.
+
+
+Without it, a model fixing one thing will sometimes tidy up three others you were happy with.
+
+9.3  Re-render only the part you changed
+You do not need a full render to check one scene:
+
+Render just 12s to 18s so I can check that fix.
+
+
+9.4  Teach it once, not every time
+When you correct the same thing twice, it belongs in your CLAUDE.md:
+
+Add to CLAUDE.md: captions always sit 80px above the split seam.
+
+
+That is how the fiftieth reel takes less effort than the fifth.
+
+9.5  A normal round of revisions
+Round
+
+What you are checking
+
+Still of the hook
+
+Does the first second look right? This is 90% of the reel's job
+
+Stills across the body
+
+Is each graphic clear? Any text too small or overlapping?
+
+First full render
+
+Pacing, cut points, whether any look-away is exposed
+
+Second render
+
+Sound balance and the small fixes
+
+
+PART 10
+
+Troubleshooting
+Everything below has happened to me. Paste the error into Claude and it will usually fix it, but here are the ones worth recognising on sight.
+
+Install problems
+What you see
+
+What it means
+
+Fix
+
+externally-managed-environment
+
+macOS blocking a system-wide Python install
+
+You skipped Part 4.3. Use ~/videotools/bin/pip instead of plain pip
+
+command not found: brew
+
+Homebrew is not on your PATH yet
+
+Close and reopen the terminal pane, or run the two echo >> ~/.zprofile lines Homebrew printed
+
+The skills installer refuses to run
+
+Node is too old
+
+brew upgrade node — you need 22.20 or later
+
+A /skill-name does not appear
+
+It installed to the wrong place
+
+Check ~/.claude/skills/<name>/SKILL.md exists, then run /reload-skills
+
+Clicking Code asks you to upgrade
+
+Your plan does not include Claude Code
+
+Pro is the cheapest plan that does
+
+
+Render problems
+What you see
+
+What it means
+
+Fix
+
+Compositor quit with signal SIGKILL
+
+Out of memory — too many videos decoding at once
+
+Ask Claude to render with --concurrency 1 and a smaller video cache
+
+Fonts look wrong in the render
+
+The font files did not load
+
+Ask Claude to copy the actual font files into the project and load them explicitly
+
+Captions drift out of sync
+
+Alignment failed on a word it could not hear
+
+Ask it to re-run alignment in segments and tell you which section failed
+
+Cut-out has a halo or jagged edge
+
+The mask was made too small and scaled up
+
+Ask for the mask at a higher resolution with more feathering
+
+Audio sounds squashed on Instagram
+
+Too loud on upload
+
+Target about -11 LUFS with peaks under -1 dB
+
+Render takes forever
+
+Normal — this is the slow part
+
+Expect 5-15 minutes for a 50s reel. Render while you do something else
+
+
+Edit problems
+Problem
+
+What to say
+
+It cut to B-roll a beat late and you see yourself turning
+
+"The cut at 25.3s is one beat late — start the B-roll 4 frames earlier"
+
+Everything looks like a generic template
+
+Your Reference folder is thin. Add 3 more of your own reels and ask it to re-study them
+
+It invented numbers or stats on a card
+
+Always check these. Say "use only numbers I gave you; leave the rest blank"
+
+Graphics are beautiful but unreadable on a phone
+
+"Everything on screen must be readable at phone size — raise the minimum text size"
+
+
+THE ONE TO ACTUALLY WATCH FOR
+
+If a graphic shows a view count, a follower number or a statistic, check it. Claude will put a plausible-looking number in a card if you did not give it one. Everything else it gets wrong, you can see. A wrong number you cannot.
+
+
+PART 11
+
+Limits — the honest list
+I am not going to pretend this replaces an editor for everything. Here is where it genuinely is not there yet.
+
+It cannot pick your best take. Trim first. That judgement is yours and it always will be.
+It is slow compared to dragging a clip. One small change can mean a re-render. The payoff is that the hundredth change costs the same as the first.
+Comedy timing needs you. It will place a cut correctly and still miss the beat that makes a joke land. You have to feel that and ask for it.
+It does not find B-roll for you. It builds graphics brilliantly. It cannot go and fetch a stock clip of a city at night — that goes in Resources yourself.
+Music has to be yours. Licensed tracks cannot be downloaded automatically. It will cut to your track, not find one.
+Long videos get expensive. This workflow is built for 30 to 90 seconds. A ten-minute YouTube video is a different problem.
+First reel is slow. Two hours, probably. You are teaching it your style and learning what to ask for. Reel three is forty minutes.
+
+WHAT IT IS GENUINELY BETTER AT THAN ME
+
+Frame-accurate sound design. Ninety-five sound cues placed against individual words is not something I would ever sit and do by hand, and it is most of why the edit sounds expensive.
+
+
+PART 12
+
+Go deeper
+If you want to see this whole idea explained on video by someone else, watch this one:
+
+
+CLAUDE EDITED THIS VIDEO (AND I'LL TEACH YOU HOW)
+
+100x Engineers  ·  20 October 2026  ·  youtu.be/Ct5_C2xC-oo
+
+A full tutorial on editing with Claude, built around six steps: prerequisites, training it on your style, testing that style, testing animations, storyboarding, then editing.
+
+
+One thing worth knowing before you watch: they take a different route to this guide. They connect Claude to After Effects and Premiere Pro, turning AI-generated video into an editable project you finish in those apps. Everything in this guide stays in code, with Remotion rendering the final file directly.
+
+Neither one is more correct. If you already live in After Effects and want Claude feeding your existing timeline, their route will feel natural. If you want to skip the timeline entirely and have the finished MP4 come out the other end, stay with this one. Watching both is the fastest way to work out which suits how you actually edit.
+
+Their video also covers style training in more depth than I do here, which is the part most people get wrong. Worth it for that section alone.
+
+
+PART 13
+
+Credits and licences
+None of these are mine. Everything except the Claude subscription itself is free, and the people who built them deserve the traffic — go and star their repos.
+
+Tool
+
+Made by
+
+Licence
+
+Link
+
+Claude Code
+
+Anthropic
+
+Paid plan
+
+claude.com/download
+
+Remotion
+
+Remotion
+
+Free, 3 people or fewer
+
+remotion.dev
+
+Remotion agent skills
+
+Remotion
+
+See repo
+
+github.com/remotion-dev/skills
+
+Anatomy
+
+wheresryan22
+
+MIT
+
+github.com/wheresryan22/anatomy
+
+Earshot
+
+Leon Lin
+
+MIT
+
+github.com/Leonxlnx/earshot
+
+Design and motion skills
+
+Emil Kowalski
+
+MIT
+
+github.com/emilkowalski/skills
+
+Thinking Orbs
+
+Jakub Antalik
+
+MIT
+
+github.com/Jakubantalik/thinking-orbs
+
+rembg
+
+Daniel Gatis
+
+MIT
+
+github.com/danielgatis/rembg
+
+sherpa-onnx
+
+k2-fsa
+
+Apache 2.0
+
+github.com/k2-fsa/sherpa-onnx
+
+PocketSphinx
+
+CMU
+
+BSD
+
+pypi.org/project/pocketsphinx
+
+ffmpeg
+
+FFmpeg team
+
+LGPL / GPL
+
+ffmpeg.org
+
+The 18 effects
+
+A fellow creator
+
+Free guide
+
+See Part 6.1
+
+
+One ask: if you build something with this, tag me. I want to see it.
+
+— Roshan  ·  @theroshankrishna
+
+
+APPENDIX
+
+Everything in one block
+For when you are setting up a second machine. Paste into the terminal pane inside Claude (Ctrl + `), top to bottom. macOS.
+
+# 1 — base tools
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install node python ffmpeg uv
+
+ 
+
+# 2 — python video tools
+
+python3 -m venv ~/videotools
+
+~/videotools/bin/pip install --upgrade pip
+
+~/videotools/bin/pip install "rembg[cpu]" opencv-python-headless sherpa-onnx pocketsphinx
+
+ 
+
+# 3 — skills
+
+npx skills@latest add remotion-dev/skills -g -a claude-code
+
+npx skills add wheresryan22/anatomy -g -a claude-code
+
+npx skills@latest add emilkowalski/skills -g -a claude-code
+
+ 
+
+# 4 — earshot (sound)
+
+uv tool install "earshot[mcp] @ git+https://github.com/Leonxlnx/earshot"
+
+earshot doctor --fetch
+
+git clone https://github.com/Leonxlnx/earshot ~/earshot-src
+
+mkdir -p ~/.claude/skills
+
+cp -r ~/earshot-src/skills/earshot ~/earshot-src/skills/real-sound ~/.claude/skills/
+
+ 
+
+# 5 — the folder
+
+mkdir -p ~/Downloads/"AI Video Editor"/{Raw,Reference,Resources,Export}
+
+ 
+
+# 6 — check
+
+node -v && python3 -V && ffmpeg -version | head -1 && uv --version \
+
+  && ~/videotools/bin/python -c "import rembg, sherpa_onnx, pocketsphinx; print('ok')"
+
+
+Then: open the Claude desktop app, go to the Code tab, set the environment to Local, open the AI Video Editor folder, make your CLAUDE.md (Part 5.10) and the reel-effects skill (Part 6.3), and you are ready.
+
+The folder, filled in
+AI Video Editor/
+
+├── CLAUDE.md                  your setup + style, read every session
+
+├── Raw/
+
+│   └── Raw footage.mp4        trimmed, 9:16, audio included
+
+├── Reference/
+
+│   ├── my-reel-1.mp4          3 to 7 of your own past reels
+
+│   ├── my-reel-2.mp4
+
+│   └── links.txt              creators you want to edit like
+
+├── Resources/
+
+│   ├── background-music.mp3
+
+│   ├── logo.png
+
+│   ├── profile.png
+
+│   └── riser.mp3
+
+└── Export/
+
+    └── reel-v1.mp4            lands here
+
+
+
+That is everything. Go make something.
+
+Setup Guide  ·  v1.0

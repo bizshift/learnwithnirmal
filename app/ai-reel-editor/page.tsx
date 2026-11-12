@@ -32,3 +32,4 @@ export const metadata: Metadata = {
 export default function AiReelEditorPage() {
   return <InteractiveReelEditorGuide />;
 }
+

@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import { FREE_GUIDES, BIO_PROFILE } from '@/lib/bio-data';
 import ShareGuideClient from './ShareGuideClient';
 import InteractiveWindowsGuide from '@/components/InteractiveWindowsGuide';
+import InteractiveReelEditorGuide from '@/components/InteractiveReelEditorGuide';
 
 interface GuidePageProps {
   params: Promise<{ id: string }>;
@@ -55,6 +56,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   if (guide.id === 'windows-app-beginner-guide') {
     return <InteractiveWindowsGuide />;
+  }
+
+  if (guide.id === 'ai-reel-editor') {
+    return <InteractiveReelEditorGuide />;
   }
 
   return (

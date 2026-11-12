@@ -335,6 +335,46 @@ export const FEATURED_PRODUCT = {
 
 export const FREE_GUIDES: GuideItem[] = [
   {
+    id: "ai-reel-editor",
+    title: "Edit Reels with AI coding agent",
+    category: "AI Video & Agent",
+    readTime: "6 min · Video & Playbook",
+    updatedDate: "New Interactive Guide",
+    coverImage: "/assets/editor-guide/preview-0.jpg",
+    description: "The complete workflow behind the 'Comment EDITOR' Reel. From talking-head footage to vertical 1080×1920 MP4 with moving examples, bilingual captions, and synced Foley sound effects.",
+    summary: "Step-by-step production playbook to edit vertical video with AI coding agents (Claude Code, Codex, Python, Remotion). Includes interactive video player, master prompt generator, and troubleshooting matrix.",
+    keySteps: [
+      {
+        heading: "1. Collect references with timestamps",
+        points: [
+          "Record source ranges, hook rhythm, typography, and motion cues from existing high-performing reels.",
+          "Use your own footage, words, and branding while borrowing structural pacing."
+        ]
+      },
+      {
+        heading: "2. Organize footage & project assets",
+        points: [
+          "Keep dedicated Raw/, Reference/, Resources/, Work/, and Export/ directories.",
+          "Mark usable takes: keep the hook, proof, actionable steps, and one specific CTA."
+        ]
+      },
+      {
+        heading: "3. Brief the agent with master prompt",
+        points: [
+          "Provide exact file paths, two-pass Tamil-to-English translation timing, and mobile safe zones.",
+          "Maintain audio hierarchy: speech in front, subtle Foley whooshes and clicks, -15.3 LUFS target."
+        ]
+      },
+      {
+        heading: "4. Review, refine, and verify",
+        points: [
+          "Watch once for narrative flow, once for audio balance, and once on a mobile device.",
+          "Check for clipping, rotation metadata, and interface overlay margins before posting."
+        ]
+      }
+    ]
+  },
+  {
     id: "windows-app-beginner-guide",
     title: "Build your first Windows utility with AI",
     category: "Windows & AI Dev",

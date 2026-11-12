@@ -24,3 +24,4 @@ export async function GET(
 
   return NextResponse.redirect(app.downloadUrl, 302);
 }
+

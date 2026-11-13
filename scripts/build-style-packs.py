@@ -110,3 +110,4 @@ export const STYLE_PACKS: StylePackItem[] = {json.dumps(packs, indent=2)};
 target_ts = Path("lib/style-packs-data.ts")
 target_ts.write_text(ts_content, encoding="utf-8")
 print(f"Generated {target_ts}")
+

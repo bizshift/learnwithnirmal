@@ -7,6 +7,7 @@ import { FREE_GUIDES, BIO_PROFILE } from '@/lib/bio-data';
 import ShareGuideClient from './ShareGuideClient';
 import InteractiveWindowsGuide from '@/components/InteractiveWindowsGuide';
 import InteractiveReelEditorGuide from '@/components/InteractiveReelEditorGuide';
+import InteractiveSmartRoomGuide from '@/components/InteractiveSmartRoomGuide';
 
 interface GuidePageProps {
   params: Promise<{ id: string }>;
@@ -60,6 +61,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   if (guide.id === 'ai-reel-editor') {
     return <InteractiveReelEditorGuide />;
+  }
+
+  if (guide.id === 'smart-room') {
+    return <InteractiveSmartRoomGuide />;
   }
 
   return (

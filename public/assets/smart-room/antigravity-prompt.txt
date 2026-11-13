@@ -1,0 +1,11 @@
+Build a USB bench-test project for my ESP32-C3 SuperMini and a four-channel relay module. All tests run with household AC disconnected and the relay contacts connected only to suitable low-voltage test equipment or loads.
+
+First ask me to confirm my exact board revision, development framework, relay module model, coil supply, input polarity, and input compatibility with 3.3 V GPIO. Leave unconfirmed choices explicit. Flag GPIO2 as a strapping pin and explain what to verify about the module’s input circuit before using it.
+
+Use the following mapping once I confirm it:
+GPIO 0 to IN1 for Tube Light
+GPIO 1 to IN2 for Curtain Light
+GPIO 2 to IN3 for Ceiling Fan
+GPIO 3 to IN4 for Bathroom Light
+
+Make relay polarity configurable. Keep each output off at startup, after a reset, and after a failed command. Explain which startup guarantees depend on the hardware before firmware initializes. Build a serial test that lets me toggle one channel, read each channel state, and turn everything off. Include the build and flash commands and a bench verification checklist for each output, power cycling, and reboot. Keep Wi-Fi setup and app integration in a later stage. Once the bench tests pass, ask which compatible app or bridge I’m using before adding that integration.

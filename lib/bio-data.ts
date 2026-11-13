@@ -335,6 +335,56 @@ export const FEATURED_PRODUCT = {
 
 export const FREE_GUIDES: GuideItem[] = [
   {
+    id: "smart-room",
+    title: "Smart room for ₹700 (ESP32-C3)",
+    category: "Hardware & Smart Home",
+    readTime: "7 min · Build Guide & Prompt",
+    updatedDate: "New Interactive Build",
+    coverImage: "/assets/smart-room/smart-room-hero.webp",
+    description: "I made my room smart for about ₹700 with an ESP32-C3 and 4-channel relay. Control tube lights, curtain light, ceiling fan, and bathroom light via phone and Siri.",
+    summary: "Complete DIY smart home guide: ESP32-C3 SuperMini + 4-channel relay build for ~₹700. Includes Antigravity USB bench firmware prompt, GPIO mapping simulator, live/neutral wiring precautions, enclosure gallery, and Apple Home/Siri integration.",
+    keySteps: [
+      {
+        heading: "1. Start with the two boards",
+        points: [
+          "ESP32-C3 SuperMini (RISC-V 160MHz) runs firmware and handles Wi-Fi.",
+          "4-channel relay module provides optocoupler isolation and switches high-voltage loads.",
+          "Confirm 3.3V logic compatibility and 5V relay coil supply before connecting."
+        ]
+      },
+      {
+        heading: "2. Draft & test firmware with Antigravity",
+        points: [
+          "Use the master Antigravity prompt to generate USB serial test firmware.",
+          "Check GPIO 2 strapping pin behavior: board must not enter download ROM mode on boot.",
+          "Verify every channel stays OFF upon power-on reset and reboot."
+        ]
+      },
+      {
+        heading: "3. Understand Live vs Neutral paths",
+        points: [
+          "Relays ONLY break the switched LIVE phase line through COM and Normally Open (NO).",
+          "Neutral returns directly to the distribution board and never touches the relay contacts."
+        ]
+      },
+      {
+        heading: "4. Fit enclosure & verify safety",
+        points: [
+          "Enclose high-voltage relay terminals in an insulated acrylic / 3D-printed enclosure.",
+          "Maintain at least 6mm creepage between 230V mains and 3.3V/5V DC wiring.",
+          "Have a qualified electrician inspect, wire the switchboard, and test breakers."
+        ]
+      },
+      {
+        heading: "5. Pair with Apple Home & test Siri",
+        points: [
+          "Map each channel: Tube Light, Curtain Light, Ceiling Fan, Bathroom Light.",
+          "Test voice commands: 'Hey Siri, turn off all lights' or 'Hey Siri, turn on ceiling fan'."
+        ]
+      }
+    ]
+  },
+  {
     id: "ai-reel-editor",
     title: "Edit Reels with AI coding agent",
     category: "AI Video & Agent",

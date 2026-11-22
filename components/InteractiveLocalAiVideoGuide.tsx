@@ -6,6 +6,8 @@ import Image from 'next/image';
 import {
   Play,
   Pause,
+  Volume2,
+  VolumeX,
   Copy,
   Check,
   ExternalLink,
@@ -15,16 +17,11 @@ import {
   HardDrive,
   Clock,
   Layers,
-  Sparkles,
-  Film,
-  Music,
-  Wrench,
   AlertTriangle,
   CheckCircle2,
-  X,
-  Maximize2,
   RotateCcw,
   FolderOpen,
+  Film,
 } from 'lucide-react';
 
 interface ToolLink {
@@ -111,29 +108,74 @@ const TOOLS_STACK: ToolLink[] = [
   },
 ];
 
-interface SlideChapter {
-  id: number;
-  seconds: number;
-  timeLabel: string;
+interface SampleFilm {
+  id: string;
   title: string;
+  tag: string;
+  aspect: '16:9' | '9:16';
+  durationLabel: string;
   note: string;
-  image: string;
+  video: string;
+  poster: string;
+  badgeColor: string;
 }
 
-const SLIDE_CHAPTERS: SlideChapter[] = [
-  { id: 1, seconds: 0, timeLabel: '0:00', title: '01 · Hook', note: 'Stop paying for AI video — 5-film montage', image: '/assets/local-ai-video/slide01.jpg' },
-  { id: 2, seconds: 6, timeLabel: '0:06', title: '02 · Proof', note: '4 films made on one 8 GB gaming GPU', image: '/assets/local-ai-video/slide02.jpg' },
-  { id: 3, seconds: 12, timeLabel: '0:12', title: '03 · Tools', note: 'Complete local stack inside ComfyUI', image: '/assets/local-ai-video/slide03.jpg' },
-  { id: 4, seconds: 18, timeLabel: '0:18', title: '04 · PC Specs', note: '8 GB VRAM, 32 GB RAM, ~80 GB SSD', image: '/assets/local-ai-video/slide04.jpg' },
-  { id: 5, seconds: 24, timeLabel: '0:24', title: '05 · Step 1: Story', note: 'Brief Claude Code to plan all 21 shots', image: '/assets/local-ai-video/slide05.jpg' },
-  { id: 6, seconds: 30, timeLabel: '0:30', title: '06 · Step 2: Prompts', note: 'Write camera-first image prompts in kf.py', image: '/assets/local-ai-video/slide06.jpg' },
-  { id: 7, seconds: 36, timeLabel: '0:36', title: '07 · Step 3: Frames', note: 'Krea-2 paints every keyframe (~1 min each)', image: '/assets/local-ai-video/slide07.jpg' },
-  { id: 8, seconds: 42, timeLabel: '0:42', title: '08 · Image Tips', note: 'Camera first, "appears only once", visual QA', image: '/assets/local-ai-video/slide08.jpg' },
-  { id: 9, seconds: 48, timeLabel: '0:48', title: '09 · Step 4: Motion', note: 'Write motion.json & animate with LTX-2.5', image: '/assets/local-ai-video/slide09.jpg' },
-  { id: 10, seconds: 54, timeLabel: '0:54', title: '10 · Video Tips', note: 'Gentle motion, avoid "truck/crane/drone", trim end', image: '/assets/local-ai-video/slide10.jpg' },
-  { id: 11, seconds: 60, timeLabel: '1:00', title: '11 · Step 5: Edit', note: 'FFmpeg cut + ACE-Step 1.5 score + -14 LUFS', image: '/assets/local-ai-video/slide11.jpg' },
-  { id: 12, seconds: 66, timeLabel: '1:06', title: '12 · Voilà', note: 'Five films. One gaming GPU. Zero subscriptions.', image: '/assets/local-ai-video/slide12.jpg' },
-  { id: 13, seconds: 72, timeLabel: '1:12', title: '13 · Free Guide', note: 'Comment FREE — full links & settings', image: '/assets/local-ai-video/slide13.jpg' },
+const SAMPLE_FILMS: SampleFilm[] = [
+  {
+    id: 'chennai-side',
+    title: 'CHENNAI SIDE',
+    tag: '16:9 · 21-Shot GTA-Style Trailer',
+    aspect: '16:9',
+    durationLabel: '0:44',
+    note: 'Full 21-shot Chennai game trailer directed by Claude Code, painted with Krea-2, animated in LTX-2.5, scored with ACE-Step 1.5.',
+    video: '/assets/local-ai-video/samples/chennai-side.mp4',
+    poster: '/assets/local-ai-video/samples/chennai-side.jpg',
+    badgeColor: 'bg-[#FF7262]',
+  },
+  {
+    id: 'blue-saree',
+    title: 'BLUE SAREE',
+    tag: '16:9 · Emotional Short Film Excerpt',
+    aspect: '16:9',
+    durationLabel: '0:35',
+    note: 'Warm cinematic short film rendered locally on 8 GB VRAM with consistent characters and natural lighting.',
+    video: '/assets/local-ai-video/samples/blue-saree.mp4',
+    poster: '/assets/local-ai-video/samples/blue-saree.jpg',
+    badgeColor: 'bg-[#62C6F8]',
+  },
+  {
+    id: 'today-is-my-day',
+    title: 'TODAY IS MY DAY',
+    tag: '9:16 · High-Energy Action Beat Cut',
+    aspect: '9:16',
+    durationLabel: '0:29',
+    note: 'Fast-cut vertical action sequence with comic beat timing, kinetic camera motion, and synced audio.',
+    video: '/assets/local-ai-video/samples/today-is-my-day.mp4',
+    poster: '/assets/local-ai-video/samples/today-is-my-day.jpg',
+    badgeColor: 'bg-[#4EC6A5]',
+  },
+  {
+    id: 'just-luck',
+    title: 'JUST LUCK',
+    tag: '9:16 · Stylized Vertical Story',
+    aspect: '9:16',
+    durationLabel: '0:30',
+    note: 'Vertical narrative film made completely locally with Krea-2 keyframes and LTX-2.5 motion.',
+    video: '/assets/local-ai-video/samples/just-luck.mp4',
+    poster: '/assets/local-ai-video/samples/just-luck.jpg',
+    badgeColor: 'bg-[#4285F4]',
+  },
+  {
+    id: 'kite-chase',
+    title: 'KITE CHASE',
+    tag: '9:16 · Rooftop Animated Shot',
+    aspect: '9:16',
+    durationLabel: '0:04',
+    note: 'Golden-hour stylized rooftop chase generated in a single LTX-2.5 pass on an RTX 4060.',
+    video: '/assets/local-ai-video/samples/kite-chase.mp4',
+    poster: '/assets/local-ai-video/samples/kite-chase.jpg',
+    badgeColor: 'bg-[#9CD4E0]',
+  },
 ];
 
 interface PlaybookStep {
@@ -272,15 +314,16 @@ const TROUBLESHOOTING = [
 
 export default function InteractiveLocalAiVideoGuide() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [activeFilm, setActiveFilm] = useState<SampleFilm>(SAMPLE_FILMS[0]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(78);
+  const [duration, setDuration] = useState(44);
   const [playbackRate, setPlaybackRate] = useState(1);
 
   const [activeStep, setActiveStep] = useState(1);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
-  const [selectedSlide, setSelectedSlide] = useState<SlideChapter | null>(null);
 
   // Interactive Master Prompt Generator state
   const [filmConcept, setFilmConcept] = useState('A fun GTA-style mini trailer set in Chennai streets with colorful locals and a surprise twist');
@@ -299,6 +342,12 @@ export default function InteractiveLocalAiVideoGuide() {
     }
   };
 
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !videoRef.current.muted;
+    setIsMuted(videoRef.current.muted);
+  };
+
   const cycleSpeed = () => {
     if (!videoRef.current) return;
     const speeds = [1, 1.25, 1.5, 2];
@@ -307,14 +356,20 @@ export default function InteractiveLocalAiVideoGuide() {
     setPlaybackRate(next);
   };
 
-  const jumpToSlide = (seconds: number) => {
-    if (!videoRef.current) return;
-    videoRef.current.currentTime = seconds;
-    setCurrentTime(seconds);
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
+  const selectFilm = (film: SampleFilm, autoPlay = true) => {
+    setActiveFilm(film);
+    setCurrentTime(0);
+    setTimeout(() => {
+      if (!videoRef.current) return;
+      videoRef.current.load();
+      videoRef.current.playbackRate = playbackRate;
+      videoRef.current.muted = isMuted;
+      if (autoPlay) {
+        videoRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+      } else {
+        setIsPlaying(false);
+      }
+    }, 30);
   };
 
   const copyText = (key: string, text: string) => {
@@ -357,8 +412,6 @@ WORKFLOW RULES (FOLLOW STRICTLY):
 
 Start now with Step 1 (STORY.md) and ask for my approval before rendering keyframes.`;
   }, [filmConcept, aspectRatio, gpuTier, shotCount]);
-
-  const currentSlideIndex = Math.min(12, Math.floor(currentTime / 6));
 
   return (
     <div
@@ -410,10 +463,10 @@ Start now with Step 1 (STORY.md) and ask for my approval before rendering keyfra
       </header>
 
       <main className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
-        {/* HERO SECTION — Matching the White Dotted Figma-Canvas + Electric Blue Selection Box Aesthetic */}
-        <section className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
-          {/* Left Copy & Quick Jump */}
-          <div className="lg:col-span-7">
+        {/* HERO SECTION — White Dotted Figma-Canvas + Electric Blue Selection Box + Real Generated Sample Films */}
+        <section id="hero-player" className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
+          {/* Left Copy & Film Switcher */}
+          <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#1D4ED8] bg-[#E0EAFF] px-3.5 py-1 text-xs font-mono font-bold text-[#1D4ED8] uppercase tracking-wide">
               <span>FREE GUIDE · ZERO SUBSCRIPTIONS</span>
             </div>
@@ -428,8 +481,7 @@ Start now with Step 1 (STORY.md) and ask for my approval before rendering keyfra
             </h1>
 
             <p className="mt-5 text-base sm:text-lg text-[#4E5666] leading-relaxed">
-              The complete local AI filmmaking stack behind the <strong>&ldquo;Comment FREE&rdquo;</strong> carousel.
-              No Seedance credits. No Higgsfield subscriptions. Just <strong>ComfyUI + LTX-2.5 + Krea-2 + Qwen-Image + ACE-Step 1.5 + FFmpeg</strong> directed by Claude Code on an <strong>8 GB RTX 4060</strong>.
+              Every film in the player was generated locally on one <strong>8 GB RTX 4060</strong> — zero Seedance credits, zero Higgsfield subscriptions. Just <strong>ComfyUI + LTX-2.5 + Krea-2 + Qwen-Image + ACE-Step 1.5 + FFmpeg</strong> directed by Claude Code.
             </p>
 
             {/* Quick Stat Pills (Bento Colors) */}
@@ -452,69 +504,81 @@ Start now with Step 1 (STORY.md) and ask for my approval before rendering keyfra
               </div>
             </div>
 
-            {/* Interactive Chapter Jump Pills */}
+            {/* Interactive Real Sample Films Switcher */}
             <div className="mt-6 rounded-2xl border-2 border-[#14161C] bg-white p-4 shadow-[4px_4px_0px_0px_#14161C]">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-mono font-bold uppercase text-[#1D4ED8]">
-                  ▶ JUMP TO ANY CAROUSEL SLIDE IN VIDEO
+                  ▶ WATCH REAL FILMS MADE ON THIS 8 GB GPU
                 </span>
                 <span className="text-xs font-mono text-neutral-500">
-                  Slide {currentSlideIndex + 1} / 13
+                  {activeFilm.aspect} · {activeFilm.durationLabel}
                 </span>
               </div>
               <div className="flex flex-wrap gap-1.5">
-                {SLIDE_CHAPTERS.map((ch, idx) => {
-                  const active = idx === currentSlideIndex;
+                {SAMPLE_FILMS.map((film) => {
+                  const active = film.id === activeFilm.id;
                   return (
                     <button
-                      key={ch.id}
-                      onClick={() => jumpToSlide(ch.seconds)}
-                      className={`rounded-full px-2.5 py-1 text-[11px] font-mono font-bold transition-all ${
+                      key={film.id}
+                      onClick={() => selectFilm(film, true)}
+                      className={`rounded-full px-3 py-1.5 text-xs font-mono font-bold transition-all ${
                         active
-                          ? 'bg-[#1D4ED8] text-white shadow-[0_2px_8px_rgba(29,78,216,0.35)]'
+                          ? 'bg-[#1D4ED8] text-white shadow-[0_2px_10px_rgba(29,78,216,0.35)]'
                           : 'border border-neutral-300 bg-neutral-50 text-neutral-700 hover:border-[#1D4ED8] hover:text-[#1D4ED8]'
                       }`}
                     >
-                      {ch.title}
+                      {film.title}
                     </button>
                   );
                 })}
               </div>
+              <p className="mt-3 text-xs text-[#4E5666] leading-relaxed">
+                <strong className="text-[#14161C]">{activeFilm.title}</strong> — {activeFilm.note}
+              </p>
             </div>
           </div>
 
-          {/* Right Vertical Carousel Video Player inside Electric Blue Selection Frame */}
-          <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="relative w-full max-w-[360px] border-[4px] border-[#1D4ED8] bg-[#14161C] p-1 shadow-[0_12px_36px_rgba(29,78,216,0.18)]">
+          {/* Right Sample Film Player inside Electric Blue Selection Frame */}
+          <div className="lg:col-span-6 flex flex-col items-center">
+            <div className="relative w-full border-[4px] border-[#1D4ED8] bg-[#14161C] p-1 shadow-[0_12px_36px_rgba(29,78,216,0.18)]">
               {/* 4 Corner Handles */}
               <span className="pointer-events-none absolute -top-2.5 -left-2.5 h-4 w-4 rounded-full border-[3px] border-[#1D4ED8] bg-white z-20" />
               <span className="pointer-events-none absolute -top-2.5 -right-2.5 h-4 w-4 rounded-full border-[3px] border-[#1D4ED8] bg-white z-20" />
               <span className="pointer-events-none absolute -bottom-2.5 -left-2.5 h-4 w-4 rounded-full border-[3px] border-[#1D4ED8] bg-white z-20" />
               <span className="pointer-events-none absolute -bottom-2.5 -right-2.5 h-4 w-4 rounded-full border-[3px] border-[#1D4ED8] bg-white z-20" />
               {/* Top & Bottom Edge Pill Handles */}
-              <span className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 h-3 w-12 rounded-full border-[3px] border-[#1D4ED8] bg-white z-20" />
-              <span className="pointer-events-none absolute -bottom-2 left-1/2 -translate-x-1/2 h-3 w-12 rounded-full border-[3px] border-[#1D4ED8] bg-white z-20" />
+              <span className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 h-3 w-14 rounded-full border-[3px] border-[#1D4ED8] bg-white z-20" />
+              <span className="pointer-events-none absolute -bottom-2 left-1/2 -translate-x-1/2 h-3 w-14 rounded-full border-[3px] border-[#1D4ED8] bg-white z-20" />
 
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-black">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
                 <video
+                  key={activeFilm.id}
                   ref={videoRef}
-                  src="/assets/local-ai-video/ltx-carousel-reel.mp4"
-                  poster="/assets/local-ai-video/slide01.jpg"
+                  src={activeFilm.video}
+                  poster={activeFilm.poster}
                   playsInline
                   loop
-                  muted
+                  muted={isMuted}
                   onClick={togglePlay}
                   onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
-                  onLoadedMetadata={(e) => setDuration(e.currentTarget.duration || 78)}
+                  onLoadedMetadata={(e) => setDuration(e.currentTarget.duration || 30)}
                   onPlay={() => setIsPlaying(true)}
                   onPause={() => setIsPlaying(false)}
-                  className="h-full w-full object-cover cursor-pointer"
+                  className="h-full w-full object-contain cursor-pointer bg-black"
                 />
+
+                {/* Top-left film badge */}
+                <div className="pointer-events-none absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-black/75 px-3 py-1 text-[11px] font-mono font-bold text-white backdrop-blur-sm">
+                  <Film className="h-3.5 w-3.5 text-[#62C6F8]" />
+                  <span>{activeFilm.title}</span>
+                  <span className="text-neutral-400">·</span>
+                  <span className="text-[#62C6F8]">{activeFilm.aspect}</span>
+                </div>
 
                 {!isPlaying && (
                   <button
                     onClick={togglePlay}
-                    aria-label="Play carousel preview video"
+                    aria-label={`Play ${activeFilm.title}`}
                     className="absolute inset-0 flex items-center justify-center bg-black/25 hover:bg-black/15 transition-colors"
                   >
                     <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-white bg-[#1D4ED8]/95 text-white shadow-xl">
@@ -524,28 +588,36 @@ Start now with Step 1 (STORY.md) and ask for my approval before rendering keyfra
                 )}
 
                 {/* Bottom Controls Overlay */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 pt-8">
-                  <div className="mb-2 h-1.5 w-full overflow-hidden rounded-full bg-white/30 cursor-pointer"
-                       onClick={(e) => {
-                         if (!videoRef.current) return;
-                         const rect = e.currentTarget.getBoundingClientRect();
-                         const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-                         videoRef.current.currentTime = pct * duration;
-                       }}>
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent p-3 pt-8">
+                  <div
+                    className="mb-2 h-1.5 w-full overflow-hidden rounded-full bg-white/30 cursor-pointer"
+                    onClick={(e) => {
+                      if (!videoRef.current) return;
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                      videoRef.current.currentTime = pct * duration;
+                    }}
+                  >
                     <div
                       className="h-full bg-[#62C6F8] transition-all"
                       style={{ width: `${(currentTime / Math.max(1, duration)) * 100}%` }}
                     />
                   </div>
                   <div className="flex items-center justify-between text-white text-xs font-mono">
-                    <div className="flex items-center gap-2">
-                      <button onClick={togglePlay} className="hover:text-[#62C6F8]">
+                    <div className="flex items-center gap-2.5">
+                      <button onClick={togglePlay} className="hover:text-[#62C6F8]" aria-label="Play or pause">
                         {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                       </button>
+                      <button onClick={toggleMute} className="hover:text-[#62C6F8]" aria-label="Mute or unmute">
+                        {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                      </button>
                       <button
-                        onClick={() => jumpToSlide(0)}
+                        onClick={() => {
+                          if (!videoRef.current) return;
+                          videoRef.current.currentTime = 0;
+                        }}
                         className="hover:text-[#62C6F8]"
-                        title="Restart video"
+                        title="Restart film"
                       >
                         <RotateCcw className="h-3.5 w-3.5" />
                       </button>
@@ -565,7 +637,7 @@ Start now with Step 1 (STORY.md) and ask for my approval before rendering keyfra
               </div>
             </div>
             <p className="mt-3 text-center text-xs font-mono text-[#4E5666]">
-              Full 13-slide animated carousel preview · Click any slide pill to jump
+              100% locally generated on RTX 4060 8 GB · Click any film pill to switch
             </p>
           </div>
         </section>
@@ -874,45 +946,68 @@ Start now with Step 1 (STORY.md) and ask for my approval before rendering keyfra
           </div>
         </section>
 
-        {/* SECTION 5: ALL 13 CAROUSEL SLIDES GALLERY */}
-        <section id="slides" className="mt-16">
+        {/* SECTION 5: GENERATED SAMPLE FILMS SHOWCASE */}
+        <section id="samples" className="mt-16">
           <div className="mb-6">
             <span className="inline-block rounded-full border-2 border-[#1D4ED8] bg-[#E0EAFF] px-3 py-0.5 text-xs font-mono font-bold text-[#1D4ED8]">
-              05 · FULL VISUAL CAROUSEL
+              05 · GENERATED SAMPLE FILMS
             </span>
             <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#14161C]">
-              Browse All 13 Slides
+              5 Real Films Made on One 8 GB Gaming GPU
             </h2>
             <p className="mt-1 text-sm text-[#4E5666]">
-              Tap any slide to inspect full-size.
+              Click any film below to load and play it directly in the player above with audio.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5">
-            {SLIDE_CHAPTERS.map((slide) => (
-              <button
-                key={slide.id}
-                onClick={() => setSelectedSlide(slide)}
-                className="group relative overflow-hidden rounded-xl border-2 border-[#1D4ED8] bg-white text-left shadow-[3px_3px_0px_0px_#1D4ED8] transition-transform hover:-translate-y-0.5"
-              >
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100">
-                  <Image
-                    src={slide.image}
-                    alt={slide.title}
-                    fill
-                    sizes="(max-width: 640px) 50vw, 240px"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute top-2 right-2 rounded-full bg-[#1D4ED8]/90 p-1.5 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="h-3.5 w-3.5" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {SAMPLE_FILMS.map((film) => {
+              const isCurrent = film.id === activeFilm.id;
+              return (
+                <button
+                  key={film.id}
+                  onClick={() => {
+                    selectFilm(film, true);
+                    document.getElementById('hero-player')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`group overflow-hidden rounded-2xl border-2 text-left transition-transform hover:-translate-y-0.5 ${
+                    isCurrent
+                      ? 'border-[#1D4ED8] bg-[#E0EAFF] shadow-[4px_4px_0px_0px_#1D4ED8]'
+                      : 'border-[#14161C] bg-white shadow-[3px_3px_0px_0px_#14161C]'
+                  }`}
+                >
+                  <div className="relative aspect-video w-full overflow-hidden bg-neutral-950">
+                    <Image
+                      src={film.poster}
+                      alt={film.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 320px"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/15 transition-colors">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-[#1D4ED8]/90 text-white shadow-lg">
+                        <Play className="h-5 w-5 fill-current ml-0.5" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-2 right-2 rounded-full bg-black/80 px-2.5 py-0.5 text-[10px] font-mono font-bold text-white">
+                      {film.durationLabel} · {film.aspect}
+                    </div>
                   </div>
-                </div>
-                <div className="p-2.5 border-t border-neutral-200">
-                  <div className="text-xs font-mono font-bold text-[#1D4ED8]">{slide.title}</div>
-                  <div className="text-[11px] text-neutral-600 truncate mt-0.5">{slide.note}</div>
-                </div>
-              </button>
-            ))}
+                  <div className="p-4">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="text-base font-extrabold text-[#14161C]">{film.title}</h3>
+                      {isCurrent && (
+                        <span className="rounded-full bg-[#1D4ED8] px-2 py-0.5 text-[10px] font-mono font-bold text-white">
+                          PLAYING
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-0.5 text-[11px] font-mono font-bold text-[#1D4ED8]">{film.tag}</div>
+                    <p className="mt-1.5 text-xs text-[#4E5666] leading-relaxed">{film.note}</p>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </section>
 
@@ -975,51 +1070,6 @@ Start now with Step 1 (STORY.md) and ask for my approval before rendering keyfra
           </a>
         </footer>
       </main>
-
-      {/* Lightbox Modal for Slides */}
-      {selectedSlide && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
-          onClick={() => setSelectedSlide(null)}
-        >
-          <div
-            className="relative max-w-lg w-full rounded-2xl border-4 border-[#1D4ED8] bg-white p-3"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setSelectedSlide(null)}
-              aria-label="Close slide preview"
-              className="absolute -top-4 -right-4 flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#1D4ED8] bg-white text-[#1D4ED8] shadow-lg hover:bg-[#1D4ED8] hover:text-white"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-100">
-              <Image
-                src={selectedSlide.image}
-                alt={selectedSlide.title}
-                fill
-                sizes="512px"
-                className="object-contain"
-              />
-            </div>
-            <div className="mt-2.5 flex items-center justify-between px-1">
-              <div>
-                <div className="text-sm font-mono font-bold text-[#1D4ED8]">{selectedSlide.title}</div>
-                <div className="text-xs text-neutral-600">{selectedSlide.note}</div>
-              </div>
-              <button
-                onClick={() => {
-                  jumpToSlide(selectedSlide.seconds);
-                  setSelectedSlide(null);
-                }}
-                className="rounded-full bg-[#1D4ED8] px-3.5 py-1.5 text-xs font-mono font-bold text-white hover:bg-[#1E40AF]"
-              >
-                Play in Video →
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

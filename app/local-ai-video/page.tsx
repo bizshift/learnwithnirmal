@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     type: 'article',
     images: [
       {
-        url: '/assets/local-ai-video/slide01.jpg',
-        width: 1080,
-        height: 1440,
+        url: '/assets/local-ai-video/samples/chennai-side.jpg',
+        width: 1280,
+        height: 720,
         alt: 'Make AI Films on Your Own 8 GB GPU for Free',
       },
     ],
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: 'Make AI Films on Your Own 8 GB GPU for Free — Complete Guide',
     description:
       'Every tool link, model download, 8 GB VRAM setup, and step-by-step playbook to make AI films locally for free.',
-    images: ['/assets/local-ai-video/slide01.jpg'],
+    images: ['/assets/local-ai-video/samples/chennai-side.jpg'],
   },
 };
 

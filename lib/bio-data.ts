@@ -340,7 +340,7 @@ export const FREE_GUIDES: GuideItem[] = [
     category: "Local AI Video · ComfyUI",
     readTime: "8 min · Interactive Guide",
     updatedDate: "New Interactive Guide",
-    coverImage: "/assets/local-ai-video/slide01.jpg",
+    coverImage: "/assets/local-ai-video/samples/chennai-side.jpg",
     description: "Stop paying for Seedance and Higgsfield. The complete local AI video workflow (ComfyUI, LTX-2.5, Krea-2, Qwen-Image, ACE-Step 1.5, FFmpeg + Claude Code) with all links, prompts, and 8 GB VRAM settings.",
     summary: "Complete step-by-step playbook behind the 'Comment FREE' carousel: every tool & model link, tested RTX 4060 8 GB VRAM + 32 GB RAM setup, interactive 13-slide video player, copy-paste Claude Code director prompt, and real production fixes.",
     keySteps: [

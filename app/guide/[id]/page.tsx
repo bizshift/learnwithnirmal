@@ -8,6 +8,7 @@ import ShareGuideClient from './ShareGuideClient';
 import InteractiveWindowsGuide from '@/components/InteractiveWindowsGuide';
 import InteractiveReelEditorGuide from '@/components/InteractiveReelEditorGuide';
 import InteractiveSmartRoomGuide from '@/components/InteractiveSmartRoomGuide';
+import InteractiveLocalAiVideoGuide from '@/components/InteractiveLocalAiVideoGuide';
 
 interface GuidePageProps {
   params: Promise<{ id: string }>;
@@ -65,6 +66,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   if (guide.id === 'smart-room') {
     return <InteractiveSmartRoomGuide />;
+  }
+
+  if (guide.id === 'local-ai-video') {
+    return <InteractiveLocalAiVideoGuide />;
   }
 
   return (

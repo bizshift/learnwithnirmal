@@ -335,6 +335,53 @@ export const FEATURED_PRODUCT = {
 
 export const FREE_GUIDES: GuideItem[] = [
   {
+    id: "local-ai-video",
+    title: "Make AI films on your 8 GB GPU (Free)",
+    category: "Local AI Video · ComfyUI",
+    readTime: "8 min · Interactive Guide",
+    updatedDate: "New Interactive Guide",
+    coverImage: "/assets/local-ai-video/slide01.jpg",
+    description: "Stop paying for Seedance and Higgsfield. The complete local AI video workflow (ComfyUI, LTX-2.5, Krea-2, Qwen-Image, ACE-Step 1.5, FFmpeg + Claude Code) with all links, prompts, and 8 GB VRAM settings.",
+    summary: "Complete step-by-step playbook behind the 'Comment FREE' carousel: every tool & model link, tested RTX 4060 8 GB VRAM + 32 GB RAM setup, interactive 13-slide video player, copy-paste Claude Code director prompt, and real production fixes.",
+    keySteps: [
+      {
+        heading: "1. Install the free local stack inside ComfyUI",
+        points: [
+          "ComfyUI runs every model locally: LTX-2.5 (video + sound), Krea-2 (keyframes), Qwen-Image (fixes), ACE-Step 1.5 (music), and FFmpeg (edit).",
+          "Tested on an NVIDIA RTX 4060 laptop (8 GB VRAM), 32 GB system RAM, and ~80 GB free SSD space (~3 min per 3-second shot)."
+        ]
+      },
+      {
+        heading: "2. Brief Claude Code & write camera-first prompts",
+        points: [
+          "Give Claude Code your story idea to generate a numbered shot list with locked character descriptions.",
+          "Start every image prompt with camera framing and add '<character> appears only once' to prevent duplicate people."
+        ]
+      },
+      {
+        heading: "3. Paint keyframes with Krea-2 & inspect before animating",
+        points: [
+          "Generate all keyframes (~1 min each) and tile them into STORYBOARD.png to check hands, legs, and consistency.",
+          "Fix broken frames with a new seed or Qwen-Image before animating — a bad frame always makes a bad video."
+        ]
+      },
+      {
+        heading: "4. Animate gently with LTX-2.5 (euler, img_compression=4)",
+        points: [
+          "Write slow, simple motion prompts and avoid words like 'truck', 'crane', or 'drone' (LTX draws them literally).",
+          "Auto-detect whichever ltx-2.5-video-vae*.safetensors file ComfyUI has installed."
+        ]
+      },
+      {
+        heading: "5. Trim, score with ACE-Step 1.5 & master in FFmpeg",
+        points: [
+          "Cut the last 0.5 seconds of every LTX clip to remove tail glitches.",
+          "Layer in an ACE-Step 1.5 score and normalize stereo audio to -14 LUFS / -1.5 dB True Peak."
+        ]
+      }
+    ]
+  },
+  {
     id: "smart-room",
     title: "Smart room for ₹700 (ESP32-C3)",
     category: "Hardware & Smart Home",

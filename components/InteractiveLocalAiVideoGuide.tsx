@@ -122,6 +122,17 @@ interface SampleFilm {
 
 const SAMPLE_FILMS: SampleFilm[] = [
   {
+    id: 'the-ridge-commercial',
+    title: 'THE RIDGE (MOTORCYCLE COMMERCIAL)',
+    tag: '16:9 · 4-Shot 35mm ARRI Alexa Brand Film',
+    aspect: '16:9',
+    durationLabel: '0:16',
+    note: 'Luxury motorcycle brand commercial: handsome rider on a dark scrambler cruising misty tea hill curves, overlook cliffs, and monumental drone ascents rendered locally for ₹0 on an 8 GB RTX 4060.',
+    video: '/assets/local-ai-video/samples/the-ridge-commercial.mp4',
+    poster: '/assets/local-ai-video/samples/the-ridge-commercial.jpg',
+    badgeColor: 'bg-[#1D4ED8]',
+  },
+  {
     id: 'chennai-side',
     title: 'CHENNAI SIDE',
     tag: '16:9 · 21-Shot GTA-Style Trailer',

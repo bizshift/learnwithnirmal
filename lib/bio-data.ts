@@ -335,6 +335,53 @@ export const FEATURED_PRODUCT = {
 
 export const FREE_GUIDES: GuideItem[] = [
   {
+    id: "ltx-desktop",
+    title: "AI videos on PC with LTX Desktop",
+    category: "Local AI Video · Open Source",
+    readTime: "6 min · App & Prompts",
+    updatedDate: "New Interactive Guide",
+    coverImage: "/assets/ltx-desktop/cover.jpg",
+    description: "Create AI videos on your PC with LTX Desktop. If you came here from my Comment LTX Reel, get the app, check your PC hardware, bypass the 8 GB VRAM barrier, and try tested Image-to-Video prompts.",
+    summary: "Complete setup and hardware guide for LTX Desktop (Lightricks LTX 2.5 Fast). Run local AI video generation on Windows & Mac, check your PC specs, understand the 8 GB tester patch, and master the built-in multi-track timeline editor.",
+    keySteps: [
+      {
+        heading: "1. Check your PC hardware",
+        points: [
+          "Official recommendation: Windows 10/11 64-bit, NVIDIA CUDA GPU with 24 GB+ VRAM (32 GB recommended), 64 GB RAM, 100 GB+ SSD.",
+          "Nirmal's tested setup: 8 GB VRAM (RTX 4060) works using the custom tester build with Fast Decode enabled by default."
+        ]
+      },
+      {
+        heading: "2. Install LTX Desktop & download models",
+        points: [
+          "Download LTX-Desktop-Setup.exe from official releases or the tester build.",
+          "Sign in to Hugging Face and accept the free model license terms to download LTX 2.5 open weights (~68 GB)."
+        ]
+      },
+      {
+        heading: "3. Configure text encoding mode",
+        points: [
+          "LTX API text encoding: uses free cloud text encoding to save 2-4 GB local VRAM (recommended for 8-12 GB cards).",
+          "Local text encoding: downloads an additional local encoder for 100% offline, air-gapped generation."
+        ]
+      },
+      {
+        heading: "4. Generate your first 540p test clip",
+        points: [
+          "Start with Image to Video using a clean reference photograph with a clear subject.",
+          "Use tested prompts for animation or realistic motion, starting at 540p 24 fps for 3-5 seconds."
+        ]
+      },
+      {
+        heading: "5. Assemble & refine in the multi-track timeline",
+        points: [
+          "Use Extend to add footage seamlessly before or after your clip without re-rendering from scratch.",
+          "Use Retake to selectively regenerate flawed regions, hands, or artifacts."
+        ]
+      }
+    ]
+  },
+  {
     id: "local-ai-video",
     title: "Make AI films on your 8 GB GPU (Free)",
     category: "Local AI Video · ComfyUI",

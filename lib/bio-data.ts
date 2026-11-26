@@ -354,7 +354,7 @@ export const FREE_GUIDES: GuideItem[] = [
       {
         heading: "2. Install LTX Desktop & download models",
         points: [
-          "Download LTX-Desktop-Setup.exe from official releases or the tester build.",
+          "Download LTX-Desktop-Setup.exe from official releases or the 8 GB tester build (Google Drive folder).",
           "Sign in to Hugging Face and accept the free model license terms to download LTX 2.5 open weights (~68 GB)."
         ]
       },

@@ -424,13 +424,25 @@ export default function InteractiveLtxDesktopGuide() {
             </button>
 
             <a
-              href="https://github.com/Lightricks/LTX-Desktop/releases/latest"
+              href="https://drive.google.com/drive/folders/1lzZ1Ca5u0BIieRPd22yEPHTMdse11OE0?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 border border-neutral-900 bg-[#ffcf32] px-3 py-1 text-xs font-mono font-bold text-neutral-950 shadow-[2px_2px_0px_0px_#000] hover:bg-[#ffe066] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none dark:border-neutral-100 dark:shadow-[2px_2px_0px_0px_#fff]"
+              title="Download the 8 GB VRAM Tester Build from Google Drive"
             >
               <Download className="h-3.5 w-3.5" />
-              <span>DOWNLOAD APP</span>
+              <span>TESTER BUILD (8 GB)</span>
+            </a>
+
+            <a
+              href="https://github.com/Lightricks/LTX-Desktop/releases/latest"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-1.5 border border-neutral-900 bg-neutral-100 px-2.5 py-1 text-xs font-mono font-bold text-neutral-800 shadow-[2px_2px_0px_0px_#000] hover:bg-neutral-200 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+              title="Official GitHub releases"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+              <span>OFFICIAL APP</span>
             </a>
           </div>
         </div>
@@ -836,9 +848,31 @@ export default function InteractiveLtxDesktopGuide() {
                 </div>
               </div>
 
-              <div className="text-xs text-amber-900 dark:text-amber-300 font-mono">
+              <div className="text-xs text-amber-900 dark:text-amber-300 font-mono mb-4">
                 ⚠️ <strong>Important Note:</strong> A successful custom test on an RTX 4060 does not guarantee that every 8 GB
                 GPU will work. Always close other heavy apps (games, Chrome with hardware acceleration, ComfyUI) before generating.
+              </div>
+
+              {/* Download Tester Build Banner */}
+              <div className="mt-4 pt-4 border-t border-amber-600/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white/60 dark:bg-black/40 p-4 border border-amber-500">
+                <div>
+                  <div className="font-bold text-sm text-neutral-950 dark:text-white font-mono flex items-center gap-1.5">
+                    <Download className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                    <span>Download LTX Desktop 1.3.3 Tester Build (8 GB Patch)</span>
+                  </div>
+                  <div className="text-[11px] font-mono text-neutral-600 dark:text-neutral-400 mt-1">
+                    Includes <code>LTX Desktop-Setup-1.3.3-tester.exe</code> + <code>READ ME FIRST - Tester Guide.md</code>.
+                  </div>
+                </div>
+                <a
+                  href="https://drive.google.com/drive/folders/1lzZ1Ca5u0BIieRPd22yEPHTMdse11OE0?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-neutral-900 bg-[#ffcf32] px-4 py-2.5 text-xs font-mono font-bold text-neutral-950 shadow-[3px_3px_0px_0px_#000] hover:bg-[#ffe066] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none shrink-0"
+                >
+                  <Download className="h-4 w-4" />
+                  <span>DOWNLOAD TESTER BUILD (GOOGLE DRIVE)</span>
+                </a>
               </div>
             </div>
           </div>
@@ -1052,10 +1086,38 @@ export default function InteractiveLtxDesktopGuide() {
                 1. Download and Run the Windows Installer
               </h3>
               <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                Open the official GitHub releases page or run the installer file. On Windows, select{' '}
-                <strong>LTX-Desktop-Setup.exe</strong> from the release assets:
+                Choose the version matching your graphics card:
               </p>
-              <div className="space-y-2 font-mono text-xs">
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a
+                  href="https://drive.google.com/drive/folders/1lzZ1Ca5u0BIieRPd22yEPHTMdse11OE0?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3 border-2 border-neutral-900 bg-[#ffcf32] hover:bg-[#ffe066] text-black shadow-[2px_2px_0px_0px_#000] font-mono text-xs"
+                >
+                  <div>
+                    <strong className="block font-bold">8 GB Tester Build (Google Drive)</strong>
+                    <span className="text-[10px] text-neutral-800">For RTX 4060 / 8 GB VRAM cards</span>
+                  </div>
+                  <Download className="h-4 w-4 shrink-0" />
+                </a>
+
+                <a
+                  href="https://github.com/Lightricks/LTX-Desktop/releases/latest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3 border border-neutral-900 bg-neutral-100 hover:bg-neutral-200 text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 shadow-[2px_2px_0px_0px_#000] dark:shadow-none font-mono text-xs"
+                >
+                  <div>
+                    <strong className="block font-bold">Official GitHub Release</strong>
+                    <span className="text-[10px] text-neutral-500">For 12 GB - 24 GB+ cards</span>
+                  </div>
+                  <ExternalLink className="h-4 w-4 shrink-0 text-neutral-500" />
+                </a>
+              </div>
+
+              <div className="space-y-2 font-mono text-xs pt-1">
                 <div className="flex items-start gap-2 p-2.5 bg-neutral-50 dark:bg-[#1a1a1a] border border-neutral-200 dark:border-neutral-800">
                   <span className="font-bold text-amber-600">A.</span>
                   <div>
@@ -1215,6 +1277,26 @@ export default function InteractiveLtxDesktopGuide() {
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+            <a
+              href="https://drive.google.com/drive/folders/1lzZ1Ca5u0BIieRPd22yEPHTMdse11OE0?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:col-span-2 flex items-center justify-between p-3.5 border-2 border-neutral-900 bg-[#ffcf32] hover:bg-[#ffe066] text-black shadow-[3px_3px_0px_0px_#000] transition-colors"
+            >
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="bg-black text-[#ffcf32] px-1.5 py-0.2 text-[9px] font-bold uppercase">
+                    FEATURED DOWNLOAD
+                  </span>
+                  <strong className="text-sm font-bold">LTX Desktop 8 GB Tester Build (Google Drive)</strong>
+                </div>
+                <span className="text-[11px] text-neutral-800">
+                  Direct folder download: includes patched setup executable for 8 GB GPUs (RTX 4060) + Fast Decode guide.
+                </span>
+              </div>
+              <Download className="h-5 w-5 text-black shrink-0 ml-3" />
+            </a>
+
             <a
               href="https://github.com/Lightricks/LTX-Desktop/releases/latest"
               target="_blank"

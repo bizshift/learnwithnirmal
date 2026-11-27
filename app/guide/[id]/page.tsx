@@ -10,6 +10,7 @@ import InteractiveReelEditorGuide from '@/components/InteractiveReelEditorGuide'
 import InteractiveSmartRoomGuide from '@/components/InteractiveSmartRoomGuide';
 import InteractiveLocalAiVideoGuide from '@/components/InteractiveLocalAiVideoGuide';
 import InteractiveLtxDesktopGuide from '@/components/InteractiveLtxDesktopGuide';
+import InteractiveOpenCoreMacGuide from '@/components/InteractiveOpenCoreMacGuide';
 
 interface GuidePageProps {
   params: Promise<{ id: string }>;
@@ -75,6 +76,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   if (guide.id === 'ltx-desktop') {
     return <InteractiveLtxDesktopGuide />;
+  }
+
+  if (guide.id === 'opencore-macos') {
+    return <InteractiveOpenCoreMacGuide />;
   }
 
   return (

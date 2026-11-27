@@ -335,6 +335,53 @@ export const FEATURED_PRODUCT = {
 
 export const FREE_GUIDES: GuideItem[] = [
   {
+    id: "opencore-macos",
+    title: "Install macOS on Windows laptop with OpenCore",
+    category: "Hardware · Hackintosh",
+    readTime: "12 min · Video & Playbook",
+    updatedDate: "New Interactive Guide",
+    coverImage: "/assets/opencore-macos/cover.jpg",
+    description: "Install macOS Sonoma or Sequoia on your Windows laptop with OpenCore. Features embedded Techy Druid video walkthrough, USBToolBox Windows port mapping, OpCore Simplify, ProperTree, and BIOS checklist.",
+    summary: "Complete step-by-step OpenCore Hackintosh playbook: auto-generate tailored EFIs using OpCore Simplify, map USB ports directly inside Windows with USBToolBox, configure config.plist with ProperTree, format flash drives with Rufus, and follow the verified laptop BIOS checklist.",
+    keySteps: [
+      {
+        heading: "1. Download required tools & runtime",
+        points: [
+          "Install Python 3.11+ on Windows (ensure 'Add python.exe to PATH' is checked).",
+          "Download OpCore Simplify, USBToolBox Windows port mapper, ProperTree, OpenCorePkg, and Rufus."
+        ]
+      },
+      {
+        heading: "2. Generate tailored EFI with OpCore Simplify",
+        points: [
+          "Run OpCore Simplify in Windows to scan your exact CPU, GPU, audio codec, and network hardware.",
+          "The script auto-scaffolds clean OpenCore ACPI tables (SSDTs) and drivers without manual guessing."
+        ]
+      },
+      {
+        heading: "3. Map USB ports in Windows with USBToolBox",
+        points: [
+          "Run Windows.exe, press D to discover ports, and plug USB 2.0 & 3.0 drives into every laptop port.",
+          "Export UTBMap.kext and copy both UTBMap.kext + USBToolBox.kext into EFI/OC/Kexts to prevent installer crashes."
+        ]
+      },
+      {
+        heading: "4. ProperTree clean snapshot & boot-args",
+        points: [
+          "Open config.plist with ProperTree and press Ctrl+Shift+R for an OC Clean Snapshot.",
+          "Add recommended boot-args: -v keepsyms=1 debug=0x100 alcid=1 -wegnoegpu (disables laptop NVIDIA GPU)."
+        ]
+      },
+      {
+        heading: "5. Configure laptop BIOS & install macOS",
+        points: [
+          "Disable Secure Boot, Fast Boot, and CFG Lock; enable UEFI and SATA AHCI mode.",
+          "Boot from USB, format internal drive to APFS with GUID Partition Map in Disk Utility, and proceed with macOS install."
+        ]
+      }
+    ]
+  },
+  {
     id: "ltx-desktop",
     title: "AI videos on PC with LTX Desktop",
     category: "Local AI Video · Open Source",
